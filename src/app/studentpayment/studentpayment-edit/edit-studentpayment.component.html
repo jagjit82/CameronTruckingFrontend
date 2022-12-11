@@ -1,0 +1,71 @@
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Edit Student Payment</h4>
+                        <p class="card-category">Please fill in the Student Payment details</p>
+                    </div>
+                    <div class="card-body">
+                        <form (ngSubmit)="onSubmit()">
+                          <div class="row">
+                            <div class="col-md-3"> <mat-form-field class="example-full-width">  <mat-label>Students</mat-label>
+                                <mat-select  name="studentPayment" id="studentPayment" (selectionChange)="onChange(studentPayment.student)" [(ngModel)]="studentPayment.student.id" >
+                                    <mat-option *ngFor="let stud of students | async" [value]="stud.id" >
+                                      {{ stud.firstName }},{{ stud.lastName }}
+                                   </mat-option> 
+                                   </mat-select>
+                                  </mat-form-field>
+                                </div>
+                                  <div class="col-md-3" *ngIf="showAmount==true">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Total Amount" id="totalAmount" required [(ngModel)]="totalAmount" name="totalAmount" disabled>
+                                    </mat-form-field> </div>
+                        </div>
+                          <div class="row">
+                            <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Payment Amount ($)" id="payment" (input)="calculateBalanceAmt()" required [(ngModel)]="studentPayment.payment" name="payment">
+                                </mat-form-field> </div>
+                                <div class="col-md-3" *ngIf="showAmount==true">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Balance Amount" id="balanceAmount" required [(ngModel)]="balanceAmount" name="balanceAmount" disabled>
+                                  </mat-form-field> </div>
+                                
+                              </div>
+                        <div class="row">
+                          <div class="col-md-3">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Remarks" type="text" id="remarks" required [(ngModel)]="studentPayment.remarks" name="remarks">
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput [matDatepicker] = "pickerpaymentDate" id="paymentDate" ng-model-options="{timezone: 'ist'}"  placeholder = "Payment Date" [(ngModel)]="studentPayment.paymentDate" name="paymentDate">
+                                        <mat-datepicker-toggle matSuffix [for] = "pickerpaymentDate"></mat-datepicker-toggle>
+                                        <mat-datepicker #pickerpaymentDate></mat-datepicker>
+                                   </mat-form-field> 
+                                  
+                                  </div>
+                            
+                          </div>
+                            <button mat-raised-button type="submit" class="btn btn-success pull-right">Save</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+  </div>
+  </div>
+  
+  
+  
+

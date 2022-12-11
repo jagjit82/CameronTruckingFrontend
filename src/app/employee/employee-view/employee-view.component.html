@@ -1,0 +1,105 @@
+<div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto">
+                    <div class="card">
+                        <div class="card-header card-header-success">
+                            <h4 class="card-title">Employee</h4>
+                            <p class="card-category">Detailed Employee data</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive table-upgrade">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center"><small>Field</small></th>
+                                            <th class="text-center"><small>Value</small></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center text-success">Name</td>
+                                            <td class="text-center">{{employee.lastName}} , {{employee.firstName}}</td>
+                                        </tr>
+                                       
+                                        <tr>
+                                            <td class="text-center text-success">Address</td>
+                                            <td class="text-center">{{employee.address}}</td>
+                                        </tr>
+                                         
+                                        <tr>
+                                            <td class="text-center text-success">City</td>
+                                            <td class="text-center">{{employee.city}}</td>
+                                        
+                                        <tr>
+                                            <td class="text-center text-success">Phone</td>
+                                            <td class="text-center">{{employee.phoneNo}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center text-success">Emergency Contact</td>
+                                            <td class="text-center" >{{employee.emergencyContact}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center text-success">Email</td>
+                                            <td class="text-center">{{employee.email}}</td>
+                                        </tr>
+                                        <tr>
+                                                <td class="text-center text-success">License Number</td>
+                                                <td class="text-center">{{employee.license}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center text-success">License Expiry Date</td>
+                                                <td class="text-center">{{employee.licenseExpiry | date : "d MMM y"}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center text-success">Birth Date</td>
+                                                <td class="text-center">{{employee.dateOfBirth | date : "d MMM y"}}</td>
+                                            </tr>
+                                            <tr>
+                                                    <td class="text-center text-success">UserName</td>
+                                                    <td class="text-center">{{employee.userName}}</td>
+                                            </tr>  
+                                            <tr>
+                                                <td class="text-center text-success">Salary</td>
+                                                <td class="text-center">{{employee.salary}}</td>
+                                        </tr>  
+                                            <tr>
+                                                <td class="text-center text-success">Date of Joining</td>
+                                                <td class="text-center">{{employee.dateOfJoining | date : "d MMM y"}}</td>
+                                            </tr>    
+                                            <tr>
+                                                        <td class="text-center text-success">Immigration Status</td>
+                                                        <td class="text-center">{{employee.immigrationStatus}}</td>
+                                            </tr> 
+                                            <tr>
+                                                            <td class="text-center text-success">Role</td>
+                                                            <td class="text-center">{{employee.role}}</td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                                <td class="text-center text-success">Created Date</td>
+                                                                <td class="text-center">{{employee.createdDate | date : "d MMM y, hh:mm:ss a"}}</td>
+                                            </tr>    
+                                            <tr>
+                                                    <td class="text-center text-success">Modified Date</td>
+                                                    <td class="text-center">{{employee.modifiedDate | date : "d MMM y, hh:mm:ss a"}}</td>
+                                            </tr>
+                                      
+                                        <tr>
+                                            <td class="text-center"></td>
+                                            <td class="text-center">
+                                                <a [routerLink]="['/employees']" class="btn btn-round btn-fill btn-info">Go Back</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+

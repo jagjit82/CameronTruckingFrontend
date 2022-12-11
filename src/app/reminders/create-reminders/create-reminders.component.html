@@ -1,0 +1,84 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header card-header-success">
+                      <h4 class="card-title">Create Reminders</h4>
+                      <p class="card-category">Please fill in the Reminders</p>
+                  </div>
+                  <div class="card-body">
+                      <form (ngSubmit)="onSubmit()">
+                        
+                      <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Student Payment"  id="payment" required [(ngModel)]="reminders.payment" name="payment">
+                            </mat-form-field> </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Plate Number Expiry"  id="plateNoExp" required [(ngModel)]="reminders.plateNoExp" name="plateNoExp">
+                                </mat-form-field> </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Vehicle CVIP Expiry"  id="cvipDate" required [(ngModel)]="reminders.cvipDate" name="cvipDate">
+                                    </mat-form-field> </div>
+                                </div>
+                      <div class="row">
+                      <div class="col-md-6">
+                          <mat-form-field class="example-full-width">
+                              <input matInput placeholder=" Vehicle Insurance Expiry Reminder(days)"  id="vehicleInsuranceExpiry" required [(ngModel)]="reminders.vehicleInsuranceExpiry" name="vehicleInsuranceExpiry">
+                          </mat-form-field> </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="License Expiry Reminder(days)"  id="licenseExpiry" required [(ngModel)]="reminders.licenseExpiry" name="licenseExpiry">
+                            </mat-form-field> </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Business License Expiry(days)"  id="businessLicense" required [(ngModel)]="reminders.businessLicense" name="businessLicense">
+                                </mat-form-field> </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="School License Expiry(days)"  id="schoolLicense" required [(ngModel)]="reminders.schoolLicense" name="schoolLicense">
+                                    </mat-form-field> </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="Operator License Expiry(days)"  id="operatorLicenceExp" required [(ngModel)]="reminders.operatorLicenceExp" name="operatorLicenceExp">
+                                        </mat-form-field> </div>
+                                    </div>
+                          
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Instructor License Expiry(days)"  id="instructorLicenceExp" required [(ngModel)]="reminders.instructorLicenceExp" name="instructorLicenceExp">
+                                            </mat-form-field> </div>
+                                        </div>
+                                  
+                        
+                  
+                          <button mat-raised-button type="submit" class="btn btn-success pull-right">Save</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  
+              </div>
+          </div>
+          
+      </div>
+  </div>
+  
+</div>
+</div>
+
+

@@ -1,0 +1,141 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header card-header-success">
+                      <h4 class="card-title">Create Vehicle</h4>
+                      <p class="card-category">Please fill in the vehicle details</p>
+                  </div>
+                  <div class="card-body">
+                      <form (ngSubmit)="onSubmit()">
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Vehicle Number"  id="vehicleNo" required [(ngModel)]="vehicle.vehicleNo" name="vehicleNo">
+                                  </mat-form-field> </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Year"  id="year" required [(ngModel)]="vehicle.year" name="year">
+                                </mat-form-field> </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-3">
+                              <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Make"  id="make" required [(ngModel)]="vehicle.make" name="make">
+                              </mat-form-field> </div>
+                              <div class="col-md-3">  <mat-form-field class="example-full-width"> <mat-label >Vehicle Type</mat-label>
+                                <mat-select  name="VehicleType" id="vehicleType" (selectionChange)="onVehicleType(vehicle.vehicleType)" [(ngModel)]="vehicle.vehicleType" >
+                                    <mat-option *ngFor="let vehicleType of vehicleTypes" [value]="vehicleType.Code" >
+                                        {{ vehicleType.Name}}
+                                   </mat-option> </mat-select></mat-form-field>
+                              </div>
+                            
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Loan"  id="loan" required [(ngModel)]="vehicle.loan" name="loan">
+                            </mat-form-field> </div></div>
+                            <div class="row">
+                            <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Loan Remarks"  id="loanRemarks" [(ngModel)]="vehicle.loanRemarks" name="loanRemarks">
+                              </mat-form-field> </div>
+                            
+                      </div>
+                      <div class="row">
+                      <div class="col-md-6">
+                          <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Plate Number"  id="plateNo" required [(ngModel)]="vehicle.plateNo" name="plateNo">
+                          </mat-form-field> </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <!-- <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Insurance Expiry Date" type="text" id="insuranceDate" required [(ngModel)]="vehicle.insuranceDate" name="insuranceDate">
+                          </mat-form-field> -->
+                          <mat-form-field class="example-full-width">
+                            <input matInput [matDatepicker] = "pickerPlateNo" [disabled]="readonly" id="plateNoExpiry" (dateChange)="changeInsuranceDate(Vehicle.insuranceDate)" ng-model-options="{timezone: 'ist'}" placeholder = "Plate Expiry Date" [(ngModel)]="vehicle.plateNoExp" name="plateNoExp">
+                            <mat-datepicker-toggle matSuffix [for] = "pickerPlateNo"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerPlateNo></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                    </div>
+                          <div class="row">
+                              <div class="col-md-6">
+                                <!-- <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Insurance Expiry Date" type="text" id="insuranceDate" required [(ngModel)]="vehicle.insuranceDate" name="insuranceDate">
+                                </mat-form-field> -->
+                                <mat-form-field class="example-full-width">
+                                  <input matInput [matDatepicker] = "pickerInsuranceDate"  id="insuranceDate" (dateChange)="changeInsuranceDate(Vehicle.insuranceDate)" ng-model-options="{timezone: 'ist'}" placeholder = "Insurance Expiry Date" [(ngModel)]="vehicle.insuranceDate" name="insuranceDate">
+                                  <mat-datepicker-toggle matSuffix [for] = "pickerInsuranceDate"></mat-datepicker-toggle>
+                                  <mat-datepicker #pickerInsuranceDate></mat-datepicker>
+                                </mat-form-field>
+                              </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                  <input matInput [matDatepicker] = "pickerCVIP" id="cvipDate" (dateChange)="changepermitDate(Vehicle.permitDate)" ng-model-options="{timezone: 'ist'}" placeholder = "CVIP Expiry" [(ngModel)]="vehicle.cvipDate" name="cvipDate">
+                                  <mat-datepicker-toggle matSuffix [for] = "pickerCVIP"></mat-datepicker-toggle>
+                                  <mat-datepicker #pickerCVIP></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        
+                          <div class="row">
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput [matDatepicker] = "pickerPlateRenewal" id="plateNoRenewal" (dateChange)="changepermitDate(Vehicle.permitDate)" ng-model-options="{timezone: 'ist'}" placeholder = "Plate Num Renewal" [(ngModel)]="vehicle.plateNoRenewal" name="plateNoRenewal">
+                                    <mat-datepicker-toggle matSuffix [for] = "pickerPlateRenewal"></mat-datepicker-toggle>
+                                    <mat-datepicker #pickerPlateRenewal></mat-datepicker>
+                                  </mat-form-field>
+                              </div>
+                          </div>
+                          <div class="row">
+                          <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Vin Num"  id="vinNo" required [(ngModel)]="vehicle.vinNo" name="vinNo">
+                            </mat-form-field> </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Color"  id="color" required [(ngModel)]="vehicle.color" name="color">
+                            </mat-form-field> </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Valid Insurance 6d Endorse"  id="validInsur6dEndorse" required [(ngModel)]="vehicle.validInsur6dEndorse" name="validInsur6dEndorse">
+                            </mat-form-field> </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Inspection Report in 12 months"  id="inspectionReportIn12Mnths" required [(ngModel)]="vehicle.inspectionReportIn12Mnths" name="inspectionReportIn12Mnths">
+                            </mat-form-field> </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Remarks"  id="remarks" required [(ngModel)]="vehicle.remarks" name="remarks">
+                            </mat-form-field> </div>
+                        </div>
+                          <button mat-raised-button type="submit" class="btn btn-success pull-right">Save</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  
+              </div>
+          </div>
+          
+      </div>
+  </div>
+  
+</div>
+</div>
+
+

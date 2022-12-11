@@ -1,0 +1,124 @@
+<div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto">
+                    <div class="card">
+                        <div class="card-header card-header-success">
+                            <h4 class="card-title">Vehicle Detail</h4>
+                            <p class="card-category">View screen for detail data</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive table-upgrade">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center"><small>Field</small></th>
+                                            <th class="text-center"><small>Value</small></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        <tr>
+                                            <td class="text-center text-success">Vehicle No</td>
+                                            <td class="text-center">{{vehicle.vehicleNo}}</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="text-center text-success">Make</td>
+                                            <td class="text-center">{{vehicle.make}}</td>
+                                        
+                                        <tr>
+                                            <tr>
+                                                <td class="text-center text-success">Vehicle Type</td>
+                                                <td class="text-center">{{vehicle.vehicleType}}</td>
+                                            
+                                            <tr>
+                                            <td class="text-center text-success">Year</td>
+                                            <td class="text-center">{{vehicle.year}}</td>
+                                        </tr>
+                                       
+                                        <tr>
+                                            <td class="text-center text-success">Loan</td>
+                                            <td class="text-center">{{vehicle.loan}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center text-success">Loan Remarks</td>
+                                            <td class="text-center">{{vehicle.loanRemarks}}</td>
+                                        </tr>
+                                        
+                                       
+                                        <tr>
+                                            <td class="text-center text-success">Plate No</td>
+                                            <td class="text-center">{{vehicle.plateNo}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center text-success">Vin Number</td>
+                                            <td class="text-center" title="{{vehicle.vinNo}} ">{{vehicle.vinNo}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center text-success">Color</td>
+                                            <td class="text-center">{{vehicle.color}}</td>
+                                        </tr>
+                                        <tr>
+                                                <td class="text-center text-success">Valid Insurance 6d Endorse</td>
+                                                <td class="text-center">{{vehicle.validInsur6dEndorse}}</td>
+                                            </tr>
+                                            <tr>
+                                                    <td class="text-center text-success">Inspection Report In 12 Mnths</td>
+                                                    <td class="text-center">{{vehicle.inspectionReportIn12Mnths}}</td>
+                                            </tr>  
+                                            <tr>
+                                                                <td class="text-center text-success">Plate Number Renewal</td>
+                                                                <td class="text-center">{{vehicle.plateNoRenewal | date : "d MMM y, hh:mm:ss a"}}</td>
+                                            </tr>    
+                                            <tr>
+                                                <td class="text-center text-success">Plate Number Expiry</td>
+                                                <td class="text-center">{{vehicle.plateNoExp | date : "d MMM y, hh:mm:ss a"}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center text-success">Insurance Date</td>
+                                                <td class="text-center">{{vehicle.insuranceDate | date : "d MMM y, hh:mm:ss a"}}</td>
+                                             </tr>
+                                             <tr>
+                                                <td class="text-center text-success">CVIP Expiry</td>
+                                                <td class="text-center">{{vehicle.cvipDate | date : "d MMM y, hh:mm:ss a"}}</td>
+                                            </tr>            
+                                            <tr>
+                                                        <td class="text-center text-success">Company</td>
+                                                        <td class="text-center">{{vehicle.company.company}}</td>
+                                            </tr> 
+                                            <tr>
+                                                                <td class="text-center text-success">Vin Number</td>
+                                                                <td class="text-center">{{vehicle.vinNo}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center text-success">Remarks</td>
+                                                <td class="text-center">{{vehicle.remarks}}</td>
+                                            </tr>
+                                            <tr>
+                                                                <td class="text-center text-success">Created Date</td>
+                                                                <td class="text-center">{{vehicle.createdDate | date : "d MMM y, hh:mm:ss a"}}</td>
+                                            </tr>    
+                                            <tr>
+                                                    <td class="text-center text-success">Modified Date</td>
+                                                    <td class="text-center">{{vehicle.modifiedDate | date : "d MMM y, hh:mm:ss a"}}</td>
+                                            </tr>
+                                      
+                                        <tr>
+                                            <td class="text-center"></td>
+                                            <td class="text-center">
+                                                <a [routerLink]="['/listVehicle']" class="btn btn-round btn-fill btn-info">Go Back</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+

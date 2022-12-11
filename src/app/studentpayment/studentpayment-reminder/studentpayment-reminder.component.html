@@ -1,0 +1,42 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title mt-0">Student Payments Reminder</h4>
+                        <p class="card-category">Pending Student Payments</p>
+                    </div>
+                    <div class="card-body">
+                            
+                        <div class="table-responsive">
+                         
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>Student</th>
+                                    <th>Total Amount</th>
+                                    <th>Amount Received </th>
+                                    <th>Payment Date</th>
+                                    <th>Remarks</th>
+                                </thead>
+                                <tbody>
+                                        <tr *ngFor="let studentPayments of studentPaymentReminder | async">
+                                            <!-- <td >{{studentPaymentsVO.student.lastName}},{{studentPayments.student.firstName}}</td> -->
+                                            <td>{{studentPayments.studPayment.student.lastName}},{{studentPayments.studPayment.student.firstName}}</td>
+                                            <td>{{studentPayments.studPayment.student.totalAmount-(studentPayments.studPayment.student.totalAmount*studentPayments.studPayment.student.discount/100)}}</td>
+                                            <td>{{studentPayments.amountReceived}}</td>
+                                            <td class="text-warning">{{studentPayments.studPayment.paymentDate | date : "d MMM y"}}</td>
+                                            <td>{{studentPayments.studPayment.remarks}}</td>
+                                            <!-- <td>{{student.modifiedDate}}</td> -->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  

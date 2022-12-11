@@ -1,0 +1,154 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title mt-0"> View Expense & Income Logs </h4>
+                        <p class="card-category"> {{company}}</p>
+                    </div>
+                    <div class="card-body">
+                    
+                        <div class="row">
+                            <div class="col-md-2">  <mat-form-field class="example-full-width"> <mat-label >Expense & Income Name</mat-label>
+                                <mat-select  name="expense" id="expense"  [(ngModel)]="expenseLog.expense" >
+                                    <mat-option *ngFor="let expense of expenses" [value]="expense" >
+                                        {{ expense.expenseName}}
+                                   </mat-option> </mat-select></mat-form-field>
+                              </div>
+                            <div class="col-md-2">
+                                <!-- <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Insurance Expiry Date" type="text" id="insuranceDate" required [(ngModel)]="expenseLog.insuranceDate" name="insuranceDate">
+                                </mat-form-field> -->
+                                <mat-form-field class="example-full-width">
+                                  <input matInput [matDatepicker] = "pickertcallDate"  id="callDate"  ng-model-options="{timezone: ist}" placeholder = "Start Date" [(ngModel)]="expenseLog.expenseStartDate" name="callStartDate">
+                                  <mat-datepicker-toggle matSuffix [for] = "pickertcallDate"></mat-datepicker-toggle>
+                                  <mat-datepicker #pickertcallDate></mat-datepicker>
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-2">
+                                <!-- <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Insurance Expiry Date" type="text" id="insuranceDate" required [(ngModel)]="expenseLog.insuranceDate" name="insuranceDate">
+                                </mat-form-field> -->
+                                <mat-form-field class="example-full-width">
+                                  <input matInput [matDatepicker] = "pickertcallDate1"  id="callDate"  ng-model-options="{timezone: ist}" placeholder = "End  Date" [(ngModel)]="expenseLog.expenseEndDate" name="callEndDate">
+                                  <mat-datepicker-toggle matSuffix [for] = "pickertcallDate1"></mat-datepicker-toggle>
+                                  <mat-datepicker #pickertcallDate1></mat-datepicker>
+                                </mat-form-field>
+                              </div>
+                              
+                                <div class="col-md-1">  <mat-form-field class="example-full-width"> <mat-label >Status</mat-label>
+                                  <mat-select  name="status" id="status" [(ngModel)]="expenseLog.status">
+                                      <mat-option *ngFor="let status of statusLs" [value]="status.Name" >
+                                          {{ status.Code }}
+                                     </mat-option> </mat-select></mat-form-field>
+                                </div>
+                                <div class="col-md-2">  <mat-form-field class="example-full-width"> <mat-label >Account Type</mat-label>
+                                    <mat-select  name="accountType" id="accountType" [(ngModel)]="expenseLog.accountType">
+                                        <mat-option *ngFor="let accountType of accountTypeLs" [value]="accountType.Name" >
+                                            {{ accountType.Code }}
+                                       </mat-option> </mat-select></mat-form-field>
+                                  </div>
+                                <div class="col-md-1"><button mat-raised-button type="button" (click)="searchExpenseLog()" class="btn btn-danger pull-left">Search</button></div>
+                                    <div class="col-md-1"> <button mat-raised-button type="button"  (click)="reset()" matTooltip="Clear" [matTooltipPosition]="'below'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                        <i class="material-icons">clear_all</i>
+                                    </button> 
+                                </div>
+                                <div class="col-md-1"><button mat-raised-button type="button" (click)="export()" class="btn btn-success pull-right">Export</button></div>
+                                
+                            </div>
+                        
+                    </div>
+                    <div class="card-body">
+                         
+                              <button mat-raised-button type="button" [routerLink]="['/addExpenseLog']" class="btn btn-danger pull-left">Add Expense & Inc Log</button>
+                              
+                              <div class="col-md-10 pull-right">
+                                <pagination-controls 
+                                    (pageChange)="pageChanged($event)"
+                                   ></pagination-controls>
+                                </div>
+                                
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th *ngIf=  "showExpense==true"> Total Expense Amt : {{expenseAmount}} </th>
+                                    <th *ngIf=  "showIncome==true">Total Income Amt : {{incomeAmount}} </th>
+                                </thead>
+                                
+                                <thead class="">
+                                    <th>
+                                        Expense & Income Name
+                                    </th>
+                                    <th>
+                                        Amount($)
+                                    </th>
+                                    <th>
+                                        Date
+                                    </th>
+                                    <th>
+                                        Status
+                                    </th>
+                                    <th>
+                                        Account Type
+                                    </th>
+                                    <th>
+                                        Mode
+                                    </th>
+                                    <th>
+                                        Description 
+                                    </th>
+                                    
+                                    <th>
+                                        Action
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <!-- <tr *ngFor="let expenseLog of expenseLogs | paginate: config"> -->
+                                        <tr *ngFor="let expenseLog of expenseLogs | paginate: config">
+                                         <td *ngIf="expenseLog.id==null" scope="row">{{expenseLog.id}}</td>
+                                         <td *ngIf="expenseLog.accountType=='INCOME'" class="text-success" >{{expenseLog.expense.expenseName}}</td>
+                                         <td *ngIf="expenseLog.accountType=='INCOME'" class="text-success">{{expenseLog.expenseAmount}}</td>
+                                         <td *ngIf="expenseLog.accountType=='INCOME'" class="text-success">{{expenseLog.expenseDate | date : "d MMM y"}}</td>
+                                         <td *ngIf="expenseLog.accountType=='INCOME'" class="text-success">{{expenseLog.status}}</td>
+                                         <td *ngIf="expenseLog.accountType=='INCOME'" class="text-success">{{expenseLog.accountType}}</td>
+                                         <td *ngIf="expenseLog.accountType=='INCOME'" class="text-success">{{expenseLog.paymentMode}}</td>
+                                         <td *ngIf="expenseLog.accountType=='INCOME'" class="text-success">{{expenseLog.description}}</td>
+                                         <td *ngIf="expenseLog.accountType!='INCOME'"  >{{expenseLog.expense.expenseName}}</td>
+                                         <td *ngIf="expenseLog.accountType!='INCOME'" >{{expenseLog.expenseAmount}}</td>
+                                         <td *ngIf="expenseLog.accountType!='INCOME'" >{{expenseLog.expenseDate | date : "d MMM y"}}</td>
+                                         <td *ngIf="expenseLog.accountType!='INCOME'" >{{expenseLog.status}}</td>
+                                         <td *ngIf="expenseLog.accountType!='INCOME'" >{{expenseLog.accountType}}</td>
+                                         <td *ngIf="expenseLog.accountType!='INCOME'" >{{expenseLog.paymentMode}}</td>
+                                         <td *ngIf="expenseLog.accountType!='INCOME'" >{{expenseLog.description}}</td>
+                                        <!-- <td><a href="#" [routerLink]="['/editDiesel', expenseLog.id]" class="btn-white btn btn-xs">Edit</a> -->
+                                        <!-- <button (click)="deleteDiesel(expenseLog.id)">Delete</button></td> -->
+                                        <td class="td-actions text-left">
+                                                <button mat-raised-button type="button" [routerLink]="['/editExpenseLog', expenseLog.id]" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">edit</i>
+                                                </button>
+                                                <!--<button mat-raised-button type="button" [routerLink]="['/viewDiesel', expenseLog.id]" matTooltip="Diesel Details" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">view_module</i>
+                                                </button>
+                                            -->
+                                                <button  mat-raised-button  type="button" (click)="deleteExpenseLog(expenseLog.id)" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i  class="material-icons">close</i>
+                                                </button>
+                                                
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                            <button mat-raised-button type="submit" (click)="exportYearlyLog()" class="btn btn-success pull-right">Export Monthly</button>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+
+
+

@@ -1,0 +1,38 @@
+<h3>Edit or Modify Truck Details</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Truck Num</label>
+      <input type="text" class="form-control" id="truckNum" required [(ngModel)]="truck.truckNum" name="truckNum">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Insurance Expiry Date</label>
+      <input type="text" class="form-control" id="insuranceDate" required [(ngModel)]="truck.insuranceDate" name="insuranceDate">
+    </div>
+    
+
+    <div class="form-group">
+      <label for="name">Permit Validity</label>
+      <input type="text" class="form-control" id="permitDate" required [(ngModel)]="truck.permitDate" name="permitDate">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Fitness</label>
+      <input type="text" class="form-control" id="fitnessDate" required [(ngModel)]="truck.fitnessDate" name="fitnessDate">
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Remarks"  id="remarks" required [(ngModel)]="vehicle.remarks" name="remarks">
+        </mat-form-field> </div>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+
+
+
+
+

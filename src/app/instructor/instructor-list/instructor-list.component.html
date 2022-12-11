@@ -1,0 +1,82 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title mt-0"> View Instructor Details</h4>
+                        <p class="card-category"> Edit/Remove the Instructors</p>
+                    </div>
+                    <div class="row">
+                                
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Instructor Name Search..." (keyup)="searchInstructors()" id="searchInstructor" required [(ngModel)]="searchInstructor" name="searchInstructor">
+                            </mat-form-field> </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <button mat-raised-button type="button" [routerLink]="['/addinstructor']" class="btn btn-danger pull-left">Add Instructor</button>
+                            <div class="col-md-10 pull-right">
+                                <pagination-controls 
+                                    (pageChange)="pageChanged($event)"
+                                   ></pagination-controls>
+                                </div>
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        Instructor's Name 
+                                    </th>
+                                    <th>
+                                        Instructor's License
+                                    </th>
+                                    <th>
+                                        Instructor License Expiry
+                                    </th>
+                                    <th>
+                                        Date of Joining
+                                    </th>
+                                    <th>
+                                        Operator's Lic No
+                                      </th>
+                                      <th>
+                                        Operator's License Expiry
+                                      </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let instructor of instructors | paginate: config">
+                                        <td>{{instructor.firstName}} {{instructor.lastName}}</td>
+                                        <td>{{instructor.instructorLicenseNum}}</td>
+                                        <td>{{instructor.instructorLicenceExp | date : "d MMM y"}}</td>
+                                        <td class="text-center" >{{instructor.dateOfJoining | date : "d MMM y"}}</td>
+                                        <td>{{instructor.operatorLicenseNum}}</td>
+                                        <td>{{instructor.operatorLicenceExp | date : "d MMM y"}}</td>
+                                        <td class="td-actions text-left">
+                                            <button mat-raised-button type="button" [routerLink]="['/editInstructor', instructor.id]" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button mat-raised-button type="button" [routerLink]="['/viewInstructor', instructor.id]" matTooltip="Instructor Details" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">view_module</i>
+                                            </button>
+                                           
+                                            <button mat-raised-button type="button"  (click)="deleteInstructor(instructor.id)" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
+                                      </tr>
+                                  
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

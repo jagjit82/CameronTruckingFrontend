@@ -1,0 +1,58 @@
+<div class="main-content" *ngIf="dieselLogs?.length > 0">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title mt-0"> View Diesel Log Details</h4>
+                    </div>
+                    <div class="card-body">
+                         
+                    <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        Vehicle Number
+                                    </th>
+                                    <th>
+                                        Driver Name
+                                    </th>
+                                    
+                                    <th>
+                                        Diesel Amount
+                                    </th>
+                                    <th>
+                                        Filling Date 
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let dieselLog of dieselLogs">
+                                         <td >{{dieselLog.vehicle.vehicleNo}}</td>
+                                         <td >{{dieselLog.driverName}}</td>
+                                        <td >{{dieselLog.dieselAmt}}</td>
+                                        <td>{{dieselLog.fillingDate | date : "d MMM y"}}</td>
+                                        <!-- <td><a href="#" [routerLink]="['/editDiesel', dieselLog.id]" class="btn-white btn btn-xs">Edit</a> -->
+                                        <!-- <button (click)="deleteDiesel(dieselLog.id)">Delete</button></td> -->
+                                        <td class="td-actions text-left">
+                                            <button mat-raised-button type="button" (click)="deleteDieselLog(dieselLog.id)" class="btn btn-success pull-left">ACCEPT</button>
+                                            <button mat-raised-button type="button" (click)="rejectDieselLog(dieselLog.id)" class="btn btn-danger pull-left">REJECT</button>
+                       
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+
+
+

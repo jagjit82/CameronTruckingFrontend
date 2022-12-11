@@ -1,0 +1,147 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title mt-0"> View Phone Logs </h4>
+                        <p class="card-category"> {{company}}</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Phone no" id="name" required [(ngModel)]="phoneLog.phoneNo" name="phoneNo">
+                                </mat-form-field></div>
+                        <div class="col-md-2">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Name" id="name" required [(ngModel)]="phoneLog.name" name="name">
+                        </mat-form-field></div>
+                            <div class="col-md-1">  <mat-form-field class="example-full-width"> <mat-label >Caller Type</mat-label>
+                              <mat-select  name="callerType" id="callerType" [(ngModel)]="phoneLog.callerType">
+                                  <mat-option *ngFor="let call of callerTypeLs" [value]="call.Name" >
+                                      {{ call.Code }}
+                                 </mat-option> </mat-select></mat-form-field>
+
+                            </div>
+                            <div class="col-md-2">
+                                <!-- <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Insurance Expiry Date" type="text" id="insuranceDate" required [(ngModel)]="phoneLog.insuranceDate" name="insuranceDate">
+                                </mat-form-field> -->
+                                <mat-form-field class="example-full-width">
+                                  <input matInput [matDatepicker] = "pickertcallDate"  id="callDate"  ng-model-options="{timezone: ist}" placeholder = "Start Date" [(ngModel)]="phoneLog.callStartDate" name="callStartDate">
+                                  <mat-datepicker-toggle matSuffix [for] = "pickertcallDate"></mat-datepicker-toggle>
+                                  <mat-datepicker #pickertcallDate></mat-datepicker>
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-2">
+                                <!-- <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Insurance Expiry Date" type="text" id="insuranceDate" required [(ngModel)]="phoneLog.insuranceDate" name="insuranceDate">
+                                </mat-form-field> -->
+                                <mat-form-field class="example-full-width">
+                                  <input matInput [matDatepicker] = "pickertcallDate1"  id="callDate"  ng-model-options="{timezone: ist}" placeholder = "End  Date" [(ngModel)]="phoneLog.callEndDate" name="callEndDate">
+                                  <mat-datepicker-toggle matSuffix [for] = "pickertcallDate1"></mat-datepicker-toggle>
+                                  <mat-datepicker #pickertcallDate1></mat-datepicker>
+                                </mat-form-field>
+                              </div>
+                              
+                                <div class="col-md-1">  <mat-form-field class="example-full-width"> <mat-label >Status</mat-label>
+                                  <mat-select  name="status" id="status" [(ngModel)]="phoneLog.status">
+                                      <mat-option *ngFor="let status of statusLs" [value]="status.Name" >
+                                          {{ status.Code }}
+                                     </mat-option> </mat-select></mat-form-field>
+                                </div>
+                                <div class="col-md-1"><button mat-raised-button type="button" (click)="searchPhoneLog()" class="btn btn-danger pull-left">Search</button></div>
+                                    <div class="col-md-1"> <button mat-raised-button type="button"  (click)="reset()" matTooltip="Clear" [matTooltipPosition]="'below'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                        <i class="material-icons">clear_all</i>
+                                    </button> 
+                                </div>
+                            </div>
+                        
+                    </div>
+                    <div class="card-body">
+                              <button mat-raised-button type="button" [routerLink]="['/addphonelog']" class="btn btn-danger pull-left">Add Phone Log</button>
+                              <div class="col-md-10 pull-right">
+                                <pagination-controls 
+                                    (pageChange)="pageChanged($event)"
+                                   ></pagination-controls>
+                                </div>
+            
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Phone Number
+                                    </th>
+                                    <th>
+                                        Caller Type
+                                    </th>
+                                    <th>
+                                        Reason to Call
+                                    </th>
+                                    
+                                    <th>
+                                        Comments
+                                    </th>
+                                    <th>
+                                        Call Date 
+                                    </th>
+                                    <th>
+                                        Status
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let phoneLog of phoneLogs | paginate: config">
+                                         <td *ngIf="phoneLog.status=='CLOSED'" class="card-category">{{phoneLog.name}}</td>
+                                         <td *ngIf="phoneLog.status=='CLOSED'" class="card-category">{{phoneLog.phoneNo}}</td>
+                                         <td *ngIf="phoneLog.status=='CLOSED'" class="card-category">{{phoneLog.callerType}}</td>
+                                         <td *ngIf="phoneLog.status=='CLOSED'" class="card-category">{{phoneLog.reason}}</td>
+                                         <td *ngIf="phoneLog.status=='CLOSED'" class="card-category">{{phoneLog.comments}}</td>
+                                         <td *ngIf="phoneLog.status=='CLOSED'" class="card-category">{{phoneLog.callDate | date : "d MMM y"}}</td>
+                                         <td *ngIf="phoneLog.status=='CLOSED'" class="card-category">{{phoneLog.status}}</td>
+                                         <td *ngIf="phoneLog.status=='OPEN'" >{{phoneLog.name}}</td>
+                                         <td *ngIf="phoneLog.status=='OPEN'">{{phoneLog.phoneNo}}</td>
+                                         <td *ngIf="phoneLog.status=='OPEN'">{{phoneLog.callerType}}</td>
+                                         <td *ngIf="phoneLog.status=='OPEN'">{{phoneLog.reason}}</td>
+                                         <td *ngIf="phoneLog.status=='OPEN'">{{phoneLog.comments}}</td>
+                                         <td *ngIf="phoneLog.status=='OPEN'">{{phoneLog.callDate | date : "d MMM y"}}</td>
+                                         <td *ngIf="phoneLog.status=='OPEN'">{{phoneLog.status}}</td>
+                                        <!-- <td><a href="#" [routerLink]="['/editDiesel', phoneLog.id]" class="btn-white btn btn-xs">Edit</a> -->
+                                        <!-- <button (click)="deleteDiesel(phoneLog.id)">Delete</button></td> -->
+                                        <td class="td-actions text-left">
+                                                <button mat-raised-button type="button" [routerLink]="['/editPhoneLog', phoneLog.id]" [queryParams]="{ page: config.currentPage}" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">edit</i>
+                                                </button>
+                                                <!--<button mat-raised-button type="button" [routerLink]="['/viewDiesel', phoneLog.id]" matTooltip="Diesel Details" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">view_module</i>
+                                                </button>
+                                            -->
+                                                <button  mat-raised-button  type="button" (click)="deletePhoneLog(phoneLog.id)" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i  class="material-icons">close</i>
+                                                </button>
+                                                <button  mat-raised-button  type="button" [routerLink]="['/followUps', phoneLog.id]" matTooltip="Follow Up" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i  class="material-icons">subdirectory_arrow_right</i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                            <button mat-raised-button type="submit" (click)="exportDiesel()" class="btn btn-success pull-right">Export</button>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+
+
+

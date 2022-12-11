@@ -1,0 +1,46 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title mt-0"> Company Details</h4>
+                        <p class="card-category">Business License Expiry Date and School License</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                       Company
+                                    </th>
+                                    <th>
+                                        School License Expiry
+                                    </th>
+                                    <th>
+                                        Business License Expiry
+                                    </th>
+                                     </thead>
+                                <tbody>
+                                    <tr *ngFor="let companyDetail of companyDetails">
+                                        <td>{{companyDetail.company.company}}</td>
+                                        <td *ngIf="'true'== highLightSchoolLicense(companyDetail.schoolLicense)" class="text-warning">{{companyDetail.schoolLicense | date : "MMM d, y"}}</td>
+                                        <td *ngIf="'false'== highLightSchoolLicense(companyDetail.schoolLicense)" >{{companyDetail.schoolLicense | date : "MMM d, y"}}</td>
+                                        <td *ngIf="'true'== highLightBusinessLicense(companyDetail.businessLicense)" class="text-warning">{{companyDetail.businessLicense | date : "MMM d, y"}}</td>
+                                        <td *ngIf="'false'== highLightBusinessLicense(companyDetail.businessLicense)">{{companyDetail.businessLicense | date : "MMM d, y"}}</td>
+                                        <!-- <td><a href="#" [routerLink]="['/editTruck', companyDetail.id]" class="btn-white btn btn-xs">Edit</a> -->
+                                        <!-- <button (click)="deleteTruck(companyDetail.id)">Delete</button></td> -->
+                                          </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+
+
+

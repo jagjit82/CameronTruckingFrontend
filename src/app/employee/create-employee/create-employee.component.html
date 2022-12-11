@@ -1,0 +1,137 @@
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Create Login User</h4>
+                        <p class="card-category">Please fill in the User details</p>
+                    </div>
+                    <div class="card-body">
+                        <form (ngSubmit)="onSubmit()">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="First Name" id="firstName" required [(ngModel)]="employee.firstName" name="firstName">
+                                    </mat-form-field> </div>
+                                <div class="col-md-3">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Last Name" type="text" id="lastName" required [(ngModel)]="employee.lastName" name="lastName">
+                                  </mat-form-field>
+                                </div>
+                            </div>  
+                            <div class="row">
+                              <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Driving License" type="text" id="license" required [(ngModel)]="employee.license" name="license">
+                                </mat-form-field>
+                              </div>
+                                    <div class="col-md-3">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput [matDatepicker] = "pickerlicenseExpiry" id="licenseExpiry" ng-model-options="{timezone: 'ist'}"  placeholder = "License Expiry" [(ngModel)]="employee.licenseExpiry" name="licenseExpiry">
+                                            <mat-datepicker-toggle matSuffix [for] = "pickerlicenseExpiry"></mat-datepicker-toggle>
+                                            <mat-datepicker #pickerlicenseExpiry></mat-datepicker>
+                                       </mat-form-field> 
+                                      
+                                      </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                      <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Address" type="text" id="address" required [(ngModel)]="employee.address" name="address">
+                                      </mat-form-field>
+                                    </div>
+                                    <div class="col-md-3">
+                                      <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="City" type="text" id="city"  [(ngModel)]="employee.city" name="city">
+                                      </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-3">
+                                      <mat-form-field class="example-full-width">
+                                          <input matInput placeholder="Phone" id="phoneNo" required [(ngModel)]="employee.phoneNo" name="phoneNo">
+                                      </mat-form-field> </div>
+                                <div class="col-md-3">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Emergency Contact" type="text" id="emergencyContact" required [(ngModel)]="employee.emergencyContact" name="emergencyContact">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Email" type="text" id="email" required [(ngModel)]="employee.email" name="email">
+                                  </mat-form-field>
+                                </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="Salary" id="salary" required [(ngModel)]="employee.salary" name="salary">
+                                        </mat-form-field> </div>
+                                </div>    
+                                <div class="row">
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput [matDatepicker] = "pickerdateOfBirth" id="dateOfBirth" ng-model-options="{timezone: 'ist'}"  placeholder = "Birth Date" [(ngModel)]="employee.dateOfBirth" name="dateOfBirth">
+                                      <mat-datepicker-toggle matSuffix [for] = "pickerdateOfBirth"></mat-datepicker-toggle>
+                                      <mat-datepicker #pickerdateOfBirth></mat-datepicker>
+                                 </mat-form-field> 
+                                
+                                </div>
+                            </div>
+                             
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Username" (blur)="validateUser()" id="userName" required [(ngModel)]="employee.userName" name="userName">
+                                      </mat-form-field> </div>
+                            </div>
+                            <div class="row" *ngIf="this.employee.id==null">
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Password"  type="password" id="passowrd" required [(ngModel)]="employee.passowrd" name="passowrd">
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput [matDatepicker] = "pickerdateOfJoining" id="dateOfJoining" ng-model-options="{timezone: 'ist'}"  placeholder = "Date Of Joining" [(ngModel)]="employee.dateOfJoining" name="dateOfJoining">
+                                      <mat-datepicker-toggle matSuffix [for] = "pickerdateOfJoining"></mat-datepicker-toggle>
+                                      <mat-datepicker #pickerdateOfJoining></mat-datepicker>
+                                 </mat-form-field> 
+                                
+                                </div>
+                            <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Immigration Status" type="text" id="immigrationStatus" required [(ngModel)]="employee.immigrationStatus" name="immigrationStatus">
+                                </mat-form-field>
+                              </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">  <mat-form-field class="example-full-width"> <mat-label >Role</mat-label>
+                                  <mat-select  name="role" id="role" [(ngModel)]="employee.role">
+                                      <mat-option value="ROLE_ADMIN" >
+                                          ADMIN
+                                     </mat-option>
+                                     <mat-option value="ROLE_USER" >USER</mat-option>
+                                     </mat-select></mat-form-field>
+                                </div>
+                            </div>
+                           
+                            <button mat-raised-button type="submit" class="btn btn-success pull-right">Save</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+  </div>
+  </div>
+  
+  
+  

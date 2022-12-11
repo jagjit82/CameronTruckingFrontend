@@ -1,0 +1,99 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title mt-0"> View Student Log Details</h4>
+                        <p class="card-category"> Student Logs Logs</p>
+                    </div>
+                    <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3"> <mat-form-field class="example-full-width">  <mat-label>Student</mat-label>
+                                    <mat-select  name="student" id="student"  [(ngModel)]="student">
+                                        <mat-option *ngFor="let stud of students | async" [value]="stud" >
+                                          {{ stud.firstName }},{{ stud.lastName }}
+                                       </mat-option> 
+                                       </mat-select>
+                                      </mat-form-field>
+                                    </div>
+                                    <button mat-raised-button type type="button" (click)="getHourDetails()" class="btn btn-success btn-sm btn-round" data-toggle="modal" data-target="#hourModal">
+                                        Training Hour Detail
+                                      </button>
+                                  
+                            </div>
+                        <div class="table-responsive">
+                            <button mat-raised-button type="button" [routerLink]="['/addStudentLog']" class="btn btn-danger pull-left">Add Student Log</button>
+                
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>Student</th>
+                                    <th>Instructor</th>
+                                    <th>Hours</th>
+                                    <th>Log Date</th>
+                                    <th>Time(start-end)</th>
+                                    <th>Remarks</th>
+                                    <th >Action</th>
+                                </thead>
+                                <tbody>
+                                        <tr *ngFor="let studentLog of studentLogs | async">
+                                            <td >{{studentLog.student.lastName}},{{studentLog.student.firstName}}</td>
+                                            <td >{{studentLog.instructor.lastName}},{{studentLog.instructor.firstName}}</td>
+                                            <td>{{studentLog.hours}}</td>
+                                            <td>{{studentLog.logDate | date : "d MMM y"}}</td>
+                                            <td>{{studentLog.startTime}}-{{studentLog.endTime}}</td>
+                                            <td>{{studentLog.remarks}}</td>
+                                            <!-- <td>{{student.modifiedDate}}</td> -->
+                                           
+                                        <td class="td-actions text-left">
+                                                <button mat-raised-button type="button" [routerLink]="['/editStudentLog', studentLog.id]" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">edit</i>
+                                                </button>
+                                                <button mat-raised-button type="button"  (click)="deleteStudentLog(studentLog.id)" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">close</i>
+                                                </button>
+                                                
+                                            </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="hourModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <h5 class="modal-title text-danger" id="exampleModalLabel">Planned Training Hours</h5>
+            <div class="row ">
+                <div class="col-md-6">
+                    {{student.prefferedHours}} Hrs
+                  </div>
+            
+          </div>
+          <h5 class="modal-title text-danger" id="exampleModalLabel">Trained for Hours</h5>
+          <div class="row ">
+            <div class="col-md-6">
+                {{hoursWorked}} Hrs
+              </div>
+        
+      </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" (click)="close()" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

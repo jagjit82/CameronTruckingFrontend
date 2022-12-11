@@ -1,0 +1,69 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header card-header-success">
+                      <h4 class="card-title">Edit Instructor Monitoring</h4>
+                      <p class="card-category">Please fill in the Instructor Monitorings</p>
+                  </div>
+                  <div class="card-body">
+                      <form (ngSubmit)="onSubmit()">
+                        <div class="row">
+                          <div class="col-md-6"> <mat-form-field class="example-full-width">  <mat-label>Trainee Instructor</mat-label>
+                              <mat-select  name="instructorTrainee" id="instructorTrainee"  [(ngModel)]="instructorMonitoring.instructorTrainee.id" >
+                                  <mat-option *ngFor="let ins of instructors | async" [value]="ins.id" >
+                                    {{ ins.lastName }},{{ ins.firstName }}
+                                 </mat-option> 
+                                 </mat-select>
+                                </mat-form-field>
+                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Training Name"  id="trainingName" required [(ngModel)]="instructorMonitoring.trainingName" name="trainingName">
+                            </mat-form-field> </div>
+                        </div>
+                      <div class="row">
+                      <div class="col-md-6">
+                          <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Hours"  id="hours" required [(ngModel)]="instructorMonitoring.hours" name="hours">
+                          </mat-form-field> </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <!-- <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Insurance Expiry Date" type="text" id="insuranceDate" required [(ngModel)]="instructorMonitoring.insuranceDate" name="insuranceDate">
+                          </mat-form-field> -->
+                          <mat-form-field class="example-full-width">
+                            <input matInput [matDatepicker] = "pickermonitoredDate"  id="monitoredDate"  ng-model-options="{timezone: 'ist'}" placeholder = "Last Monitored Date" [(ngModel)]="instructorMonitoring.monitoredDate" name="monitoredDate">
+                            <mat-datepicker-toggle matSuffix [for] = "pickermonitoredDate"></mat-datepicker-toggle>
+                            <mat-datepicker #pickermonitoredDate></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6"> <mat-form-field class="example-full-width">  <mat-label>Monitoring Instructor</mat-label>
+                          <mat-select  name="instructorMonitor" id="instructorMonitor"  [(ngModel)]="instructorMonitoring.instructorMonitor.id" (ngModelChange)="onInstructorMonitoringSelection()" >
+                              <mat-option *ngFor="let ins of instructors | async" [value]="ins.id" >
+                                {{ ins.lastName }},{{ ins.firstName }}
+                             </mat-option> 
+                             </mat-select>
+                            </mat-form-field>
+                      </div>
+                  </div>
+                          <button mat-raised-button type="submit" class="btn btn-success pull-right">Save</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  
+              </div>
+          </div>
+          
+      </div>
+  </div>
+  
+</div>
+</div>
+
+

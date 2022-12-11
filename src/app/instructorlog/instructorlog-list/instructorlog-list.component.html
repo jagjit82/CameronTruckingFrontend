@@ -1,0 +1,101 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title mt-0"> View Instructor Log Details</h4>
+                        <p class="card-category"> {{company}}</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <mat-form-field class="example-full-width">  <mat-label>Instructor</mat-label>
+                                    <mat-select  name="instructor" id="instructor"  [(ngModel)]="instructorSearch.instructor" >
+                                        <mat-option *ngFor="let ins of instructors" [value]="ins" >
+                                          {{ ins.lastName }},{{ ins.firstName }}
+                                       </mat-option> 
+                                       </mat-select>
+                                      </mat-form-field>    
+                            </div><div class="col-md-2">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput [matDatepicker] = "pickerstartDate" id="startDate" ng-model-options="{timezone: 'ist'}"  placeholder = "Start Date" [(ngModel)]="instructorSearch.startDate" name="startDate">
+                                        <mat-datepicker-toggle matSuffix [for] = "pickerstartDate"></mat-datepicker-toggle>
+                                        <mat-datepicker #pickerstartDate></mat-datepicker>
+                                   </mat-form-field> </div>
+                                   <div class="col-md-2">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput [matDatepicker] = "pickerEndDate" id="endDate" ng-model-options="{timezone: 'ist'}"  placeholder = "End Date" [(ngModel)]="instructorSearch.endDate" name="endDate">
+                                        <mat-datepicker-toggle matSuffix [for] = "pickerEndDate"></mat-datepicker-toggle>
+                                        <mat-datepicker #pickerEndDate></mat-datepicker>
+                                   </mat-form-field> 
+                                  </div>
+                                  <div class="col-md-2">
+                                    <mat-form-field class="example-full-width">  <mat-label>Training Type</mat-label>
+                                        <mat-select  name="trainingType" id="trainingType"  [(ngModel)]="instructorSearch.trainingType" >
+                                            <mat-option *ngFor="let type of trainingTypeList" [value]="type.Name" >
+                                              {{ type.Name }}
+                                           </mat-option> 
+                                           </mat-select>
+                                          </mat-form-field>
+                                  </div>
+                                  <div class="col-md-1"><button mat-raised-button type="button" (click)="searchInstructorLog()" class="btn btn-danger pull-left">Search</button></div>
+                                    <div class="col-md-1"> <button mat-raised-button type="button"  (click)="reset()" matTooltip="Clear" [matTooltipPosition]="'below'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                        <i class="material-icons">clear_all</i>
+                                    </button> 
+                                </div>
+                                </div>
+                          
+                              <button mat-raised-button type="button" [routerLink]="['/addInstructorLog']" class="btn btn-danger pull-left">Add Instructor Log</button>
+                              
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                <th>{{hourSum}}</th></thead>
+                                <thead class="">
+                                    <th>Instructor</th>
+                                    <th>Training</th>
+                                    <th>Hours</th>
+                                    <th>Time(start-end)</th>
+                                    <th>Log Date</th>
+                                    <th>Remarks</th>
+                                    <th >Action</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let instructorLog of instructorLogs">
+                                         <td >{{instructorLog.instructor.lastName}},{{instructorLog.instructor.firstName}}</td>
+                                         <td >{{instructorLog.trainingType}}</td>
+                                         <td >{{instructorLog.hours}}</td>
+                                         <td >{{instructorLog.startTime}}-{{instructorLog.endTime}}</td>
+                                         <td>{{instructorLog.logDate | date : "d MMM y"}}</td>
+                                         <td >{{instructorLog.remarks}}</td>
+                                        <!-- <td><a href="#" [routerLink]="['/editDiesel', instructorLog.id]" class="btn-white btn btn-xs">Edit</a> -->
+                                        <!-- <button (click)="deleteDiesel(instructorLog.id)">Delete</button></td> -->
+                                        <td class="td-actions text-left">
+                                                <button mat-raised-button type="button" [routerLink]="['/editInstructorLog', instructorLog.id]" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">edit</i>
+                                                </button>
+                                                <!--<button mat-raised-button type="button" [routerLink]="['/viewDiesel', instructorLog.id]" matTooltip="Diesel Details" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">view_module</i>
+                                                </button>
+                                            -->
+                                                <button  mat-raised-button  type="button" (click)="deleteInstructorLog(instructorLog.id)" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i  class="material-icons">close</i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                            <button mat-raised-button type="submit" (click)="exportDiesel()" class="btn btn-success pull-right">Export</button>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+
+
+

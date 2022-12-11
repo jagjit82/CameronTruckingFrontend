@@ -1,0 +1,75 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header card-header-success">
+                      <h4 class="card-title">Edit Instructor training</h4>
+                      <p class="card-category">Please fill in the Instructor trainings</p>
+                  </div>
+                  <div class="card-body">
+                      <form (ngSubmit)="onSubmit()">
+                        <div class="row">
+                          <div class="col-md-6"> <mat-form-field class="example-full-width">  <mat-label>Trainee Instructor</mat-label>
+                              <mat-select  name="instructorTrainee" id="instructorTrainee"  [(ngModel)]="instructorTraining.instructorTrainee.id" >
+                                  <mat-option *ngFor="let ins of instructors | async" [value]="ins.id" >
+                                    {{ ins.lastName }},{{ ins.firstName }}
+                                 </mat-option> 
+                                 </mat-select>
+                                </mat-form-field>
+                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Training Name"  id="trainingName" required [(ngModel)]="instructorTraining.trainingName" name="trainingName">
+                            </mat-form-field> </div>
+                        </div>
+                      <div class="row">
+                      <div class="col-md-6">
+                          <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Hours"  id="hours" required [(ngModel)]="instructorTraining.hours" name="hours">
+                          </mat-form-field> </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Remarks"  id="remarks" required [(ngModel)]="instructorTraining.remarks" name="remarks">
+                            </mat-form-field> </div>
+                        </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <!-- <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Insurance Expiry Date" type="text" id="insuranceDate" required [(ngModel)]="instructorTraining.insuranceDate" name="insuranceDate">
+                          </mat-form-field> -->
+                          <mat-form-field class="example-full-width">
+                            <input matInput [matDatepicker] = "pickertrainingDateDate"  id="trainingDate"  ng-model-options="{timezone: 'ist'}" placeholder = "Last Training Date" [(ngModel)]="instructorTraining.trainingDate" name="trainingDate">
+                            <mat-datepicker-toggle matSuffix [for] = "pickertrainingDateDate"></mat-datepicker-toggle>
+                            <mat-datepicker #pickertrainingDateDate></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6"> <mat-form-field class="example-full-width">  <mat-label>training Instructor</mat-label>
+                          <mat-select  name="instructorMonitor" id="instructorMonitor"  [(ngModel)]="instructorTraining.instructorMonitor.id" (ngModelChange)="onInstructortrainingSelection()" >
+                              <mat-option *ngFor="let ins of instructors | async" [value]="ins.id" >
+                                {{ ins.lastName }},{{ ins.firstName }}
+                             </mat-option> 
+                             </mat-select>
+                            </mat-form-field>
+                      </div>
+                  </div>
+                          <button mat-raised-button type="submit" class="btn btn-success pull-right">Save</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  
+              </div>
+          </div>
+          
+      </div>
+  </div>
+  
+</div>
+</div>
+
+

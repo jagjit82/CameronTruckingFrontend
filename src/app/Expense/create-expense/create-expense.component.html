@@ -1,0 +1,35 @@
+<div class="main-content">
+  <div class="container-fluid">
+          <div class="col-md-16">
+              <div class="card">
+                  <div class="card-header card-header-success">
+                      <h4 class="card-title">Create Expense & Income Log</h4>
+                      <p class="card-category">Please fill in the Expenses & Incomes</p>
+                  </div>
+                  <div class="card-body">
+                      <form (ngSubmit)="onSubmit()">
+                        <div class="row">
+                          <div class="col-md-6"></div>
+                        </div>
+                      
+                      <div class="row">
+                      <div class="col-md-6">
+                          <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Expense Name"  id="expenseName" required [(ngModel)]="expense.expenseName" name="expenseName">
+                          </mat-form-field> </div>
+                      </div>
+                      
+                      
+                          <button mat-raised-button type="submit"  class="btn btn-success pull-right">Save</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  
+              </div>
+          </div>
+          
+      </div>
+  
+</div>
+</div>
+
+

@@ -1,0 +1,100 @@
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Create Student Log</h4>
+                        <p class="card-category">Please fill in the Student Log details</p>
+                    </div>
+                    <div class="card-body">
+                        <form (ngSubmit)="onSubmit()">
+                          <div class="row">
+                            <div class="col-md-6" *ngIf="studentLog.id!=null"> <mat-form-field class="example-full-width">  <mat-label>Edit Student</mat-label>
+                                <mat-select  name="studentLog" id="studentLog"  [(ngModel)]="studentLog.student.id" >
+                                    <mat-option *ngFor="let stud of students | async" [value]="stud.id" >
+                                      {{ stud.firstName }},{{ stud.lastName }}
+                                   </mat-option> 
+                                   </mat-select>
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-6" *ngIf="studentLog.id==null"> <mat-form-field class="example-full-width">  <mat-label>Student</mat-label>
+                                  <mat-select  name="studentLog" id="studentLog"  [(ngModel)]="studentLog.student" (selectionChange)="onChange(studentLog.student)">
+                                      <mat-option *ngFor="let stud of students | async" [value]="stud" >
+                                        {{ stud.firstName }},{{ stud.lastName }}
+                                     </mat-option> 
+                                     </mat-select>
+                                    </mat-form-field>
+                                  </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-6" *ngIf="studentLog.id!=null"> <mat-form-field class="example-full-width">  <mat-label>Edit Instructor</mat-label>
+                                    <mat-select  name="instructor" id="instructor"  [(ngModel)]="studentLog.instructor.id" >
+                                        <mat-option *ngFor="let ins of instructors | async" [value]="ins.id" >
+                                          {{ ins.lastName }},{{ ins.firstName }}
+                                       </mat-option> 
+                                       </mat-select>
+                                      </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-6" *ngIf="studentLog.id==null"> <mat-form-field class="example-full-width">  <mat-label>Instructor</mat-label>
+                                  <mat-select  name="instructor" id="instructor"  [(ngModel)]="studentLog.instructor" >
+                                      <mat-option *ngFor="let ins of instructors | async" [value]="ins" >
+                                        {{ ins.lastName }},{{ ins.firstName }}
+                                     </mat-option> 
+                                     </mat-select>
+                                    </mat-form-field>
+                              </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Start Time (eg 12:30)"  id="startTime" required [(ngModel)]="studentLog.startTime" name="startTime">
+                                </mat-form-field> </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="End Time (eg 15:30)"  id="endTime" required [(ngModel)]="studentLog.endTime" name="endTime">
+                                  </mat-form-field> </div>
+                              </div>
+                                
+                                
+                        
+                        <div class="row">
+                          <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Remarks" type="text" id="remarks" [(ngModel)]="studentLog.remarks" name="remarks">
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput [matDatepicker] = "pickerlogDate" id="logDate" ng-model-options="{timezone: 'ist'}"  placeholder = "Log Date" [(ngModel)]="studentLog.logDate" name="logDate">
+                                        <mat-datepicker-toggle matSuffix [for] = "pickerlogDate"></mat-datepicker-toggle>
+                                        <mat-datepicker #pickerlogDate></mat-datepicker>
+                                   </mat-form-field> 
+                                  
+                                  </div>
+                            
+                          </div>
+                            <button mat-raised-button type="submit" class="btn btn-success pull-right">Save</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+  </div>
+  </div>
+  
+  
+  
+

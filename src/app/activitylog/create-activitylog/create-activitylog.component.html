@@ -1,0 +1,56 @@
+<div class="main-content">
+  <div class="container-fluid">
+          <div class="col-md-16">
+              <div class="card">
+                  <div class="card-header card-header-success">
+                      <h4 class="card-title">Create Activity Log</h4>
+                      <p class="card-category">Please fill in the Activity Logs</p>
+                  </div>
+                  <div class="card-body">
+                      <form (ngSubmit)="onSubmit()">
+                        <div class="row">
+                          <div class="col-md-10">  <mat-form-field class="example-full-width"> <mat-label >Category</mat-label>
+                            <mat-select  name="category" id="category" [(ngModel)]="activityLog.category">
+                                <mat-option *ngFor="let category of categories" [value]="category.Name" >
+                                    {{ category.Code }}
+                               </mat-option> </mat-select></mat-form-field>
+                          </div>
+                      </div> 
+                      <div class="row">
+                        <div class="col-md-10">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Activity"  id="activity" required [(ngModel)]="activityLog.activity" name="activity">
+                            </mat-form-field> </div>
+                        </div>
+                      <div class="row">
+                      <div class="col-md-10">
+                          <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Additional Comments"  id="comments" required [(ngModel)]="activityLog.comments" name="comments">
+                          </mat-form-field> </div>
+                      </div>
+                      
+                      <div class="row">
+                        <div class="col-md-10">
+                          <!-- <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Insurance Expiry Date" type="text" id="insuranceDate" required [(ngModel)]="activityLog.insuranceDate" name="insuranceDate">
+                          </mat-form-field> -->
+                          <mat-form-field class="example-full-width">
+                            <input matInput [matDatepicker] = "pickeractivityDate"  id="activityDate"  ng-model-options="{timezone: ist}" placeholder = "Activity Date" [(ngModel)]="activityLog.activityDate" name="activityDate">
+                            <mat-datepicker-toggle matSuffix [for] = "pickeractivityDate"></mat-datepicker-toggle>
+                            <mat-datepicker #pickeractivityDate></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                          <button mat-raised-button type="submit"  class="btn btn-success pull-right">Save</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  
+              </div>
+          </div>
+          
+      </div>
+  
+</div>
+</div>
+
+

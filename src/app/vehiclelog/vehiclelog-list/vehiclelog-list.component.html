@@ -1,0 +1,104 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title mt-0"> View Vehicle Details</h4>
+                        <p class="card-category"> {{company}}</p>
+                    </div>
+                    <div class="card-body">
+                         <nav *ngIf="totalPages>1" aria-label="Page navigation example">
+                                <ul class="pagination pagination-circle pg-blue">
+                                  <li class="page-item"><a class="page-link" (click)="first()" mdbWavesEffect>First</a></li>
+                                  <li class="page-item">
+                                    <a class="page-link" aria-label="Previous" (click)="prev()" mdbWavesEffect>
+                                      <span aria-hidden="true">&laquo;</span>
+                                      <span class="sr-only">Previous</span>
+                                    </a>
+                                  </li>
+                                  <li   *ngFor="let pageNum of  arrayOne(totalPages); let currentElementIndex=index"><a class="page-link active" (click)="getVehicleList(currentElementIndex)" mdbWavesEffect>{{currentElementIndex+1}}</a></li>
+                                  <li class="page-item">
+                                    <a class="page-link" aria-label="Next" (click)="next()" mdbWavesEffect>
+                                      <span aria-hidden="true">&raquo;</span>
+                                      <span class="sr-only">Next</span>
+                                    </a>
+                                  </li>
+                                  <li class="page-item"><a class="page-link" (click)="last()" mdbWavesEffect>Last</a></li>
+                                  <li class="page-item active"><a  class="page-link" mdbWavesEffect>{{pageNum+1}}</a></li>
+                                </ul>
+                              </nav>
+                              <button mat-raised-button type="button" [routerLink]="['/addVehicleLog']" class="btn btn-danger pull-left">Add Repair</button>
+                  
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        Vehicle Number
+                                    </th>
+                                    <th>
+                                        Mechanic Name
+                                    </th>
+                                    
+                                    <th>
+                                        Repair Amount ($)
+                                    </th>
+                                    <th>
+                                        Labour Amount ($)
+                                    </th>
+                                    <th>
+                                        Diesel 
+                                    </th>
+                                    <th>
+                                        Description
+                                    </th>
+                                    <th>
+                                        Labour Parts
+                                    </th>
+                                    <th>
+                                        Repair Date
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let vehicleLog of vehicleLogs">
+                                         <td >{{vehicleLog.vehicle.vehicleNo}}</td>
+                                         <td >{{vehicleLog.mechanicName}}</td>
+                                         <td >${{vehicleLog.repairAmt}}</td>
+                                         <td >${{vehicleLog.labourAmt}}</td>
+                                        <td>{{vehicleLog.diesel}}</td>
+                                        <td title={{vehicleLog.description}}>{{vehicleLog.description}}</td>
+                                        <td >{{vehicleLog.labourParts}}</td>
+                                         <td>{{vehicleLog.repairDate | date : "d MMM y"}}</td>
+                                        <!-- <td><a href="#" [routerLink]="['/editVehicle', vehicleLog.id]" class="btn-white btn btn-xs">Edit</a> -->
+                                        <!-- <button (click)="deleteVehicle(vehicleLog.id)">Delete</button></td> -->
+                                        <td class="td-actions text-left">
+                                                <button mat-raised-button type="button" [routerLink]="['/editVehicleLog', vehicleLog.id]" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">edit</i>
+                                                </button>
+                                                <!--<button mat-raised-button type="button" [routerLink]="['/viewVehicle', vehicleLog.id]" matTooltip="Vehicle Details" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">view_module</i>
+                                                </button>
+                                            -->
+                                                <button  mat-raised-button  type="button" (click)="deleteVehicleLog(vehicleLog.id)" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i  class="material-icons">close</i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                            <button mat-raised-button type="submit" (click)="exportVehicle()" class="btn btn-success pull-right">Export</button>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+
+
+

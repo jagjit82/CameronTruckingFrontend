@@ -1,0 +1,86 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header card-header-success">
+                      <h4 class="card-title">Create Instructor Log</h4>
+                      <p class="card-category">Please fill in the Instructor Logs</p>
+                  </div>
+                  <div class="card-body">
+                      <form (ngSubmit)="onSubmit()">
+                        <div class="row">
+                          <div class="col-md-6" *ngIf="instructorLog.id!=null"> <mat-form-field class="example-full-width">  <mat-label>Instructor</mat-label>
+                              <mat-select  name="instructor" id="instructor"  [(ngModel)]="instructorLog.instructor.id" >
+                                  <mat-option *ngFor="let ins of instructors | async" [value]="ins.id" >
+                                    {{ ins.lastName }},{{ ins.firstName }}
+                                 </mat-option> 
+                                 </mat-select>
+                                </mat-form-field>
+                          </div>
+                          <div class="col-md-6"*ngIf="instructorLog.id==null"> <mat-form-field class="example-full-width">  <mat-label>Instructor</mat-label>
+                            <mat-select  name="instructor" id="instructor"  [(ngModel)]="instructorLog.instructor" >
+                                <mat-option *ngFor="let ins of instructors | async" [value]="ins" >
+                                  {{ ins.lastName }},{{ ins.firstName }}
+                               </mat-option> 
+                               </mat-select>
+                              </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6" > <mat-form-field class="example-full-width">  <mat-label>Training Type</mat-label>
+                            <mat-select  name="trainingType" id="trainingType"  [(ngModel)]="instructorLog.trainingType" >
+                                <mat-option *ngFor="let type of trainingTypeList" [value]="type.Name" >
+                                  {{ type.Name }}
+                               </mat-option> 
+                               </mat-select>
+                              </mat-form-field>
+                            </div>
+                      </div>   
+                      <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Start Time (eg 12:30)"  id="startTime" required [(ngModel)]="instructorLog.startTime" name="startTime">
+                            </mat-form-field> </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="End Time (eg 15:30)"  id="endTime" required [(ngModel)]="instructorLog.endTime" name="endTime">
+                              </mat-form-field> </div>
+                          </div>
+                            
+                            
+                    
+                    <div class="row">
+                      <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+                          <input matInput placeholder="Remarks" type="text" id="remarks" [(ngModel)]="instructorLog.remarks" name="remarks">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput [matDatepicker] = "pickerlogDate" id="logDate" ng-model-options="{timezone: 'ist'}"  placeholder = "Log Date" [(ngModel)]="instructorLog.logDate" name="logDate">
+                                    <mat-datepicker-toggle matSuffix [for] = "pickerlogDate"></mat-datepicker-toggle>
+                                    <mat-datepicker #pickerlogDate></mat-datepicker>
+                               </mat-form-field> 
+                              
+                              </div>
+                        
+                      </div>
+                          <button mat-raised-button type="submit" class="btn btn-success pull-right">Save</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  
+              </div>
+          </div>
+          
+      </div>
+  </div>
+  
+</div>
+</div>
+
+

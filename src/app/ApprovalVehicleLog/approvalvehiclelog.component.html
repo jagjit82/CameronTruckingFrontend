@@ -1,0 +1,66 @@
+<div class="main-content" *ngIf="vehicleLogs?.length > 0">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title mt-0"> Vehicle Repair Approvals</h4>
+                    </div>
+                    <div class="card-body">
+                        
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        Vehicle Number
+                                    </th>
+                                    <th>
+                                        Mechanic Name
+                                    </th>
+                                    
+                                    <th>
+                                        Repair Amount
+                                    </th>
+                                    <th>
+                                        Diesel 
+                                    </th>
+                                    <th>
+                                        Description
+                                    </th>
+                                    <th>
+                                        Repair Date
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let vehicleLog of vehicleLogs">
+                                         <td >{{vehicleLog.vehicle.vehicleNo}}</td>
+                                         <td >{{vehicleLog.mechanicName}}</td>
+                                        <td >{{vehicleLog.repairAmt}}</td>
+                                        <td>{{vehicleLog.diesel}}</td>
+                                        <td title={{vehicleLog.description}}>{{vehicleLog.description}}</td>
+                                        <td>{{vehicleLog.repairDate | date : "d MMM y"}}</td>
+                                        <!-- <td><a href="#" [routerLink]="['/editVehicle', vehicleLog.id]" class="btn-white btn btn-xs">Edit</a> -->
+                                        <!-- <button (click)="deleteVehicle(vehicleLog.id)">Delete</button></td> -->
+                                        <td class="td-actions text-left">
+                                            <button mat-raised-button type="button" (click)="deleteVehicleLog(vehicleLog.id)" class="btn btn-success pull-left">ACCEPT</button>
+                                            <button mat-raised-button type="button" (click)="rejectVehicleLog(vehicleLog.id)" class="btn btn-danger pull-left">REJECT</button>
+                       
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+
+
+

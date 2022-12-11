@@ -1,0 +1,86 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header card-header-success">
+                      <h4 class="card-title">Create Vehicle Log</h4>
+                      <p class="card-category">Please fill in the vehicleLog details</p>
+                  </div>
+                  <div class="card-body">
+                      <form (ngSubmit)="onSubmit()">
+                        <div class="row">
+                          <div class="col-md-6"> <mat-form-field class="example-full-width">  <mat-label>Vehicle</mat-label>
+                              <mat-select  name="vehicle" id="vehicle"  [(ngModel)]="vehicleLog.vehicle.id" (ngModelChange)="onVehicleSelection()">
+                                  <mat-option *ngFor="let veh of vehicles | async" [value]="veh.id" >
+                                      {{ veh.vehicleNo }}
+                                 </mat-option> 
+                                 </mat-select>
+                                </mat-form-field>
+                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Mechanic Name"  id="mechanicName" required [(ngModel)]="vehicleLog.mechanicName" name="mechanicName">
+                            </mat-form-field> </div>
+                        </div>
+                     
+                      <div class="row">
+                      <div class="col-md-6">
+                          <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Repair Amount ($)"  id="repairAmt" required [(ngModel)]="vehicleLog.repairAmt" name="repairAmt">
+                          </mat-form-field> </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Labour Amount ($)"  id="labourAmt" required [(ngModel)]="vehicleLog.labourAmt" name="labourAmt">
+                            </mat-form-field> </div>
+                        </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <!-- <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Insurance Expiry Date" type="text" id="insuranceDate" required [(ngModel)]="vehicleLog.insuranceDate" name="insuranceDate">
+                          </mat-form-field> -->
+                          <mat-form-field class="example-full-width">
+                            <input matInput [matDatepicker] = "pickerrepairDate"  id="repairDate"  ng-model-options="{timezone: 'ist'}" placeholder = "Vehicle Repair Date" [(ngModel)]="vehicleLog.repairDate" name="pickerrepairDate">
+                            <mat-datepicker-toggle matSuffix [for] = "pickerrepairDate"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerrepairDate></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                    </div>
+                          <div class="row">
+                          <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Description"  id="description" required [(ngModel)]="vehicleLog.description" name="description">
+                            </mat-form-field> </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Labour Parts"  id="labourParts" required [(ngModel)]="vehicleLog.labourParts" name="labourParts">
+                            </mat-form-field> </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Diesel"  id="diesel" required [(ngModel)]="vehicleLog.diesel" name="diesel">
+                            </mat-form-field> </div>
+                        </div>
+                        
+                          <button mat-raised-button type="submit" class="btn btn-success pull-right">Save</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  
+              </div>
+          </div>
+          
+      </div>
+  </div>
+  
+</div>
+</div>
+
+

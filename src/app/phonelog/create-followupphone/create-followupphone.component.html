@@ -1,0 +1,45 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header card-header-success">
+                      <h4 class="card-title">Create Follow Up Log</h4>
+                      <p class="card-category">Please fill in the Follow Up Logs</p>
+                  </div>
+                  <div class="card-body">
+                      <form (ngSubmit)="onSubmit()">
+                        
+                        <div class="row">
+                          <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Additional Comments"  id="comments" required [(ngModel)]="followUpPhone.comments" name="comments">
+                              </mat-form-field> </div>
+                          </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <!-- <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Insurance Expiry Date" type="text" id="insuranceDate" required [(ngModel)]="followUpPhone.insuranceDate" name="insuranceDate">
+                          </mat-form-field> -->
+                          <mat-form-field class="example-full-width">
+                            <input matInput [matDatepicker] = "pickertcallDate"  id="followUpDate"  ng-model-options="{timezone: ist}" placeholder = "Follow Up Date" [(ngModel)]="followUpPhone.followUpDate" name="followUpDate">
+                            <mat-datepicker-toggle matSuffix [for] = "pickertcallDate"></mat-datepicker-toggle>
+                            <mat-datepicker #pickertcallDate></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    
+                          <button mat-raised-button type="submit" class="btn btn-success pull-right">Save</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  
+              </div>
+          </div>
+          
+      </div>
+  </div>
+  
+</div>
+</div>
+
+

@@ -1,0 +1,85 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title mt-0"> View Vehicle Details</h4>
+                        <p class="card-category"> {{company}}</p>
+                    </div>
+                    
+                    <div class="card-body">
+                     <button mat-raised-button type="button" [routerLink]="['/addVehicle']" class="btn btn-danger pull-left">Add Vehicle</button>
+                     <div class="col-md-10 pull-right">
+                        <pagination-controls 
+                            (pageChange)="pageChanged($event)"
+                           ></pagination-controls>
+                        </div>
+    
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        Vehicle Number
+                                    </th>
+                                    <th>
+                                        Plate Number
+                                    </th>
+                                    <th>
+                                        Vin Number 
+                                    </th>
+                                    <th>
+                                        Plate Num Expiry
+                                    </th>
+                                    <th>
+                                        CVIP Date
+                                    </th>
+                                    <th>
+                                        Vehicle Type
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let vehicle of vehicles | async | paginate: config">
+                                        <td *ngIf="vehicle.id==null" scope="row">{{vehicle.id}}</td>
+                                         <td >{{vehicle.vehicleNo}}</td>
+                                        <td >{{vehicle.plateNo}}</td>
+                                        <td>{{vehicle.vinNo}}</td>
+                                        <td>{{vehicle.plateNoExp | date : "d MMM y"}}</td>
+                                        <td>{{vehicle.cvipDate | date : "d MMM y"}}</td>
+                                        <td>{{vehicle.vehicleType}}</td>
+                                        <!-- <td><a href="#" [routerLink]="['/editVehicle', vehicle.id]" class="btn-white btn btn-xs">Edit</a> -->
+                                        <!-- <button (click)="deleteVehicle(vehicle.id)">Delete</button></td> -->
+                                        <td class="td-actions text-left">
+                                                <button mat-raised-button type="button" [routerLink]="['/editVehicle', vehicle.id]" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">edit</i>
+                                                </button>
+                                                <button mat-raised-button type="button" [routerLink]="['/viewVehicle', vehicle.id]" matTooltip="Vehicle Details" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">view_module</i>
+                                                </button>
+                                                
+                                                <!-- <button  mat-raised-button  type="button" *ngIf="'ADMIN'==role"  (click)="deleteVehicle(vehicle.id)" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i  class="material-icons">close</i>
+                                                </button> -->
+                                                <button  mat-raised-button  type="button" (click)="deleteVehicle(vehicle.id)" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i  class="material-icons">close</i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+
+
+

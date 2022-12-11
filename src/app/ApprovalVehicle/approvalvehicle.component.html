@@ -1,0 +1,62 @@
+<div class="main-content" *ngIf="vehicles?.length > 0">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title mt-0"> View Vehicle Details</h4>
+                    </div>
+                    
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        Vehicle Number
+                                    </th>
+                                    <th>
+                                        Plate Number
+                                    </th>
+                                    <th>
+                                        Vin Number 
+                                    </th>
+                                    <th>
+                                        Plate Num Expiry
+                                    </th>
+                                    <th>
+                                        Remarks
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let vehicle of vehicles">
+                                         <td >{{vehicle.vehicleNo}}</td>
+                                        <td >{{vehicle.plateNo}}</td>
+                                        <td>{{vehicle.vinNo}}</td>
+                                        <td>{{vehicle.plateNoExp | date : "d MMM y"}}</td>
+                                        <td>{{vehicle.remarks}}</td>
+                                        <!-- <td><a href="#" [routerLink]="['/editVehicle', vehicle.id]" class="btn-white btn btn-xs">Edit</a> -->
+                                        <!-- <button (click)="deleteVehicle(vehicle.id)">Delete</button></td> -->
+                                        <td class="td-actions text-left">
+                                            <button mat-raised-button type="button" (click)="deleteVehicle(vehicle.id)" class="btn btn-success pull-left">ACCEPT</button>
+                                            <button mat-raised-button type="button" (click)="rejectVehicle(vehicle.id)" class="btn btn-danger pull-left">REJECT</button>
+                       
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                            <button mat-raised-button type="submit" (click)="exportVehicle()" class="btn btn-success pull-right">Export</button>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+
+
+

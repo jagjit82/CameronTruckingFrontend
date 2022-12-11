@@ -1,0 +1,126 @@
+<div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto">
+                    <div class="card">
+                        <div class="card-header card-header-success">
+                            <h4 class="card-title">Instructor Detail</h4>
+                            <p class="card-category">View screen for detail data</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive table-upgrade">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center"><small>Field</small></th>
+                                            <th class="text-center"><small>Value</small></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        <tr>
+                                            <td class="text-center text-success">Instructor's Name</td>
+                                            <td class="text-center">{{instructor.lastName}},{{instructor.firstName}}</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="text-center text-success">Instructor's License Number</td>
+                                            <td class="text-center">{{instructor.instructorLicenseNum}}</td>
+                                        
+                                        <tr>
+                                            <td class="text-center text-success">Instructor's License Expiry Date</td>
+                                            <td class="text-center">{{instructor.instructorLicenceExp | date : "d MMM y"}}</td>
+                                        </tr>
+                                       
+                                        <tr>
+                                            <td class="text-center text-success">Type(s) of Instruction</td>
+                                            <td class="text-center">{{instructor.instructionType}}</td>
+                                        </tr>
+                                        
+                                       
+                                        <tr>
+                                            <td class="text-center text-success">Operator's License No</td>
+                                            <td class="text-center">{{instructor.operatorLicenseNum}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center text-success">Instructor's Date of Joining</td>
+                                            <td class="text-center" >{{instructor.dateOfJoining | date : "d MMM y"}}</td>
+                                        </tr>
+                                       
+                                        <tr>
+                                            <td class="text-center text-success">Operator's License Exp Date</td>
+                                            <td class="text-center">{{instructor.operatorLicenceExp | date : "d MMM y"}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center text-success">Operator's License Class</td>
+                                            <td class="text-center">{{instructor.operatorLicenceClass}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center text-success">Address</td>
+                                            <td class="text-center">{{instructor.address}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center text-success">Phone</td>
+                                            <td class="text-center">{{instructor.phone}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center text-success">Email</td>
+                                            <td class="text-center">{{instructor.email}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center text-success">Emergency Contact</td>
+                                            <td class="text-center">{{instructor.emergencyContact}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center text-success">Medical Conditions</td>
+                                            <td class="text-center">{{instructor.medicalConditions}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center text-success">Class Of Instructions</td>
+                                            <td class="text-center">{{instructor.classOfInstructions}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center text-success">Class class Of DriverLicense</td>
+                                            <td class="text-center">{{instructor.classOfDriverLicense}}</td>
+                                        </tr>
+                                        <tr>
+                                                <td class="text-center text-success">Date Instructor Last Monitored</td>
+                                                <td class="text-center">{{instructor.instructorMonitoredDate | date : "d MMM y"}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center text-success">Date of birth</td>
+                                                <td class="text-center">{{instructor.dateOfBirth | date : "d MMM y"}}</td>
+                                            </tr>
+                                                
+                                            <tr>
+                                                        <td class="text-center text-success">Company</td>
+                                                        <td class="text-center">{{instructor.company.company}}</td>
+                                            </tr> 
+                                           
+                                            <tr>
+                                                                <td class="text-center text-success">Created Date</td>
+                                                                <td class="text-center">{{instructor.createdDate | date : "d MMM y, hh:mm:ss a"}}</td>
+                                            </tr>    
+                                            <tr>
+                                                    <td class="text-center text-success">Modified Date</td>
+                                                    <td class="text-center">{{instructor.modifiedDate | date : "d MMM y, hh:mm:ss a"}}</td>
+                                            </tr>
+                                      
+                                        <tr>
+                                            <td class="text-center"></td>
+                                            <td class="text-center">
+                                                <a [routerLink]="['/instructors']" class="btn btn-round btn-fill btn-info">Go Back</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+

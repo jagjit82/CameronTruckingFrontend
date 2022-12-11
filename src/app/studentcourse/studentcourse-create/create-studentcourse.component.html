@@ -1,0 +1,81 @@
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Create Student Course</h4>
+                        <p class="card-category">Please fill in the Student Course  details</p>
+                    </div>
+                    <div class="card-body">
+                        <form (ngSubmit)="onSubmit()">
+                          <div class="row">
+                            <div class="col-md-6" *ngIf="studentCourse.id!=null"> <mat-form-field class="example-full-width">  <mat-label>Edit Students</mat-label>
+                                <mat-select  name="studentCourse" id="studentCourse"  [(ngModel)]="studentCourse.student.id" (selectionChange)="onChange(studentCourse.student)">
+                                    <mat-option *ngFor="let stud of students | async" [value]="stud.id" >
+                                      {{ stud.firstName }},{{ stud.lastName }}
+                                   </mat-option> 
+                                   </mat-select>
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-6" *ngIf="studentCourse.id==null"> <mat-form-field class="example-full-width">  <mat-label>Students</mat-label>
+                                  <mat-select  name="studentCourse" id="studentCourse"  [(ngModel)]="studentCourse.student" (selectionChange)="onChange(studentCourse.student)">
+                                      <mat-option *ngFor="let stud of students | async" [value]="stud" >
+                                        {{ stud.firstName }},{{ stud.lastName }}
+                                     </mat-option> 
+                                     </mat-select>
+                                    </mat-form-field>
+                                  </div>
+                              </div>
+                             
+                                                          <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput [matDatepicker] = "pickerstartDate" id="startDate" ng-model-options="{timezone: 'ist'}"  placeholder = "Course Start Date" [(ngModel)]="studentCourse.startDate" name="startDate">
+                                        <mat-datepicker-toggle matSuffix [for] = "pickerstartDate"></mat-datepicker-toggle>
+                                        <mat-datepicker #pickerstartDate></mat-datepicker>
+                                   </mat-form-field> 
+                                  
+                                  </div>
+                            
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput [matDatepicker] = "pickerendDate" id="endDate" ng-model-options="{timezone: 'ist'}"  placeholder = "Course End Date" [(ngModel)]="studentCourse.endDate" name="endDate">
+                                    <mat-datepicker-toggle matSuffix [for] = "pickerendDate"></mat-datepicker-toggle>
+                                    <mat-datepicker #pickerendDate></mat-datepicker>
+                               </mat-form-field> 
+                              
+                              </div>
+                        
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput [matDatepicker] = "pickercccExpectedDate" id="cccExpectedDate" ng-model-options="{timezone: 'ist'}"  placeholder = "CCC Expected Date" [(ngModel)]="studentCourse.cccExpectedDate" name="cccExpectedDate">
+                                <mat-datepicker-toggle matSuffix [for] = "pickercccExpectedDate"></mat-datepicker-toggle>
+                                <mat-datepicker #pickercccExpectedDate></mat-datepicker>
+                           </mat-form-field> 
+                          
+                          </div>
+                    
+                  </div>
+                 
+                            <button mat-raised-button type="submit" class="btn btn-success pull-right">Save</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+  </div>
+  </div>
+  
+  
+  
+

@@ -1,0 +1,161 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title mt-0"> View Messages </h4>
+                        <p class="card-category"> {{company}}</p>
+                    </div>
+                    <div class="card-body">
+                              <button mat-raised-button type="button"  data-toggle="modal" data-target="#messageModal" class="btn btn-danger pull-left">Compose</button>
+                  
+                              <div class="col-md-10 pull-right">
+                                <pagination-controls 
+                                    (pageChange)="pageChanged($event)"
+                                   ></pagination-controls>
+                                </div>
+                  
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        To
+                                    </th>
+                                    <th>
+                                        From
+                                    </th>
+                                    <th>
+                                        Subject
+                                    </th>
+                                    <th>
+                                        Message
+                                    </th>
+                                    
+                                    <th>
+                                        Date 
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let message of messages | paginate: config">
+                                         <td *ngIf="message.status=='READ'">{{message.receiver.lastName}},{{message.receiver.firstName}}</td>
+                                         <td *ngIf="message.status=='READ'">{{message.sender.lastName}},{{message.sender.firstName}}</td>
+                                         <td *ngIf="message.status=='READ'">{{message.subject}}</td>
+                                         <td *ngIf="message.status=='READ'">{{message.body}}</td>
+                                         <td *ngIf="message.status=='READ'">{{message.createdDate | date : "d MMM y hh:mm"}}</td>
+                                         <td *ngIf="message.status=='UNREAD'" class="thick">{{message.sender.lastName}},{{message.sender.firstName}}</td>
+                                         <td *ngIf="message.status=='UNREAD'" class="thick">{{message.receiver.lastName}},{{message.receiver.firstName}}</td>
+                                         <td *ngIf="message.status=='UNREAD'" class="thick">{{message.subject}}</td>
+                                         <td *ngIf="message.status=='UNREAD'" class="thick">{{message.body}}</td>
+                                         <td *ngIf="message.status=='UNREAD'" class="thick">{{message.createdDate | date : "d MMM y hh:mm"}}</td>
+                                         <!-- <td><a href="#" [routerLink]="['/editDiesel', message.id]" class="btn-white btn btn-xs">Edit</a> -->
+                                        <!-- <button (click)="deleteDiesel(message.id)">Delete</button></td> -->
+                                        <td class="td-actions text-left">
+                                                <!-- <button mat-raised-button type="button" [routerLink]="['/editMessage', message.id]" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">edit</i>
+                                                </button> -->
+                                                <!--<button mat-raised-button type="button" [routerLink]="['/viewDiesel', message.id]" matTooltip="Diesel Details" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">view_module</i>
+                                                </button>
+                                            -->
+                                                <button  mat-raised-button  type="button" (click)="deleteMessage(message.id)" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i  class="material-icons">close</i>
+                                                </button>
+                                                <button mat-raised-button type type="button" (click)="readMessage(message)" class="btn btn-info btn-round btn-sm" data-toggle="modal" data-target="#viewMessage">
+                                                    View Message
+                                                  </button>
+                                                  <button  mat-raised-button type type="button" (click)="replyMessage(message)" class="btn btn-info btn-round btn-sm" data-toggle="modal" data-target="#replyMessage">
+                                                    Reply
+                                                  </button>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+
+
+  <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="viewRoadTestLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+                     <app-create-message></app-create-message>
+            
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="viewMessage" tabindex="-1" role="dialog" aria-labelledby="viewMessageLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-body">
+            <table class="table table-hover">
+              <thead class="">
+                  <th>From</th>
+                  <th>Message</th>
+                  </thead>
+              <tbody>
+                <tr *ngFor="let message of modalViewMessages">
+                                    
+                      <td >{{message.sender.lastName}},{{message.sender.firstName}}</td>
+                      <td >{{message.body}}</td>
+                      
+                  </tr>
+              </tbody>
+          </table>
+
+          </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="replyMessage" tabindex="-1" role="dialog" aria-labelledby="viewMessageLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-body">
+            <table class="table table-hover">
+              <thead class="">
+                  <th>Message</th>
+                  </thead>
+              <tbody>
+                    <tr><td>To:</td>
+                        <td *ngIf="replyMess!=null">{{replyMess.receiver.lastName}},{{replyMess.receiver.firstName}}</td></tr>
+                    <tr><td>Subject</td><td *ngIf="replyMess!=null">{{replyMess.subject}}</td></tr>
+                    <div class="col-md-12" *ngIf="replyMess!=null">
+                        <mat-form-field class="example-full-width">
+                            <textarea matInput placeholder="Message"  id="body" required [(ngModel)]="replyMess.body" rows="3" name="body"></textarea>
+                        </mat-form-field> </div>
+                   
+              </tbody>
+          </table>
+
+          </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            Close
+          </button>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="sendReply()">Send Reply</button>
+        </div>
+      </div>
+    </div>
+  </div>

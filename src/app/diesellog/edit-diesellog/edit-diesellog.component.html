@@ -1,0 +1,60 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header card-header-success">
+                      <h4 class="card-title">Edit Diesel Log</h4>
+                      <p class="card-category">Please fill in the Diesel Logs</p>
+                  </div>
+                  <div class="card-body">
+                      <form (ngSubmit)="onSubmit()">
+                        <div class="row">
+                          <div class="col-md-6"> <mat-form-field class="example-full-width">  <mat-label>Vehicle</mat-label>
+                              <mat-select  name="vehicle" id="vehicle"  [(ngModel)]="dieselLog.vehicle.id" (ngModelChange)="onVehicleSelection()">
+                                  <mat-option *ngFor="let veh of vehicles | async" [value]="veh.id" >
+                                      {{ veh.vehicleNo }}
+                                 </mat-option> 
+                                 </mat-select>
+                                </mat-form-field>
+                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Driver Name"  id="mechanicName" required [(ngModel)]="dieselLog.driverName" name="driverName">
+                            </mat-form-field> </div>
+                        </div>
+                      <div class="row">
+                      <div class="col-md-6">
+                          <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Diesel Amount"  id="dieselAmt" required [(ngModel)]="dieselLog.dieselAmt" name="repairAmt">
+                          </mat-form-field> </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <!-- <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Insurance Expiry Date" type="text" id="insuranceDate" required [(ngModel)]="dieselLog.insuranceDate" name="insuranceDate">
+                          </mat-form-field> -->
+                          <mat-form-field class="example-full-width">
+                            <input matInput [matDatepicker] = "pickerfillingDate"  id="fillingDate"  ng-model-options="{timezone: 'ist'}" placeholder = "Vehicle Filling Date" [(ngModel)]="dieselLog.fillingDate" name="fillingDate">
+                            <mat-datepicker-toggle matSuffix [for] = "pickerfillingDate"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerfillingDate></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                    </div>
+                        
+                          <button mat-raised-button type="submit" class="btn btn-success pull-right">Save</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  
+              </div>
+          </div>
+          
+      </div>
+  </div>
+  
+</div>
+</div>
+
+

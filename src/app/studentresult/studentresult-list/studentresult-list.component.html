@@ -1,0 +1,56 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title mt-0"> View Student Result Details</h4>
+                        <p class="card-category"> Student Results Logs</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-md-10 pull-right">
+                            <pagination-controls 
+                                (pageChange)="pageChanged($event)"
+                               ></pagination-controls>
+                            </div>
+                        <div class="table-responsive">
+                            <button mat-raised-button type="button" [routerLink]="['/addStudentResult']" class="btn btn-danger pull-left">Add Student Result</button>
+                
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>Student</th>
+                                    <th>Result</th>
+                                    <th>Result Date</th>
+                                    <th>Remarks</th>
+                                    <th >Action</th>
+                                </thead>
+                                <tbody>
+                                        <tr *ngFor="let studentResult of studentResults | async | paginate: config">
+                                            <td *ngIf="studentResult.id==null" scope="row">{{studentResult.id}}</td>
+                                            <td >{{studentResult.student.lastName}},{{studentResult.student.firstName}}</td>
+                                            <td>{{studentResult.result}}</td>
+                                            <td>{{studentResult.resultDate | date : "d MMM y"}}</td>
+                                            <td>{{studentResult.remarks}}</td>
+                                            <!-- <td>{{student.modifiedDate}}</td> -->
+                                           
+                                        <td class="td-actions text-left">
+                                                <button mat-raised-button type="button" [routerLink]="['/editStudentResult', studentResult.id]" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">edit</i>
+                                                </button>
+                                                <button mat-raised-button type="button"  (click)="deleteStudentResult(studentResult.id)" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">close</i>
+                                                </button>
+                                                
+                                            </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  

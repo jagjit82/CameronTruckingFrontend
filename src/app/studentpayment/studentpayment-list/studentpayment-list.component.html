@@ -1,0 +1,56 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title mt-0"> View Student Payment Details</h4>
+                        <p class="card-category"> Student Payments Logs</p>
+                    </div>
+                    <div class="card-body">
+                            
+                        <div class="table-responsive">
+                            <button mat-raised-button type="button" [routerLink]="['/createStudentPayment']" class="btn btn-danger pull-left">Add Student Payment</button>
+                            <div class="col-md-10 pull-right">
+                                <pagination-controls 
+                                    (pageChange)="pageChanged($event)"
+                                   ></pagination-controls>
+                                </div>
+            
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>Student</th>
+                                    <th>Payment Amount ($)</th>
+                                    <th>Payment Date</th>
+                                    <th>Remarks</th>
+                                    <th >Action</th>
+                                </thead>
+                                <tbody>
+                                        <tr *ngFor="let studentPayments of studentPayments | async | paginate: config">
+                                            <td >{{studentPayments.student.lastName}},{{studentPayments.student.firstName}}</td>
+                                            <td>${{studentPayments.payment}}</td>
+                                            <td>{{studentPayments.paymentDate | date : "d MMM y"}}</td>
+                                            <td>{{studentPayments.remarks}}</td>
+                                            <!-- <td>{{student.modifiedDate}}</td> -->
+                                           
+                                        <td class="td-actions text-left">
+                                                <button mat-raised-button type="button" [routerLink]="['/editStudentPayment', studentPayments.id]" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">edit</i>
+                                                </button>
+                                                <button mat-raised-button type="button"  (click)="deleteStudentPayment(studentPayments.id)" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">close</i>
+                                                </button>
+                                                
+                                            </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  

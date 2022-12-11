@@ -1,0 +1,105 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title mt-0"> View Student Details</h4>
+                        <p class="card-category"> View,Edit,Delete and see details of each logged record</p>
+                    </div>
+                    <div class="card-body">
+                        
+                        <div class="table-responsive">
+                            <div class="row">
+                            <div class="col-md-2">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Student Name" id="name" required [(ngModel)]="studentSearch.name" name="name">
+                                </mat-form-field></div><div class="col-md-2">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput [matDatepicker] = "pickerstartDate" id="startDate" ng-model-options="{timezone: 'ist'}"  placeholder = "Start Date" [(ngModel)]="studentSearch.startDate" name="startDate">
+                                        <mat-datepicker-toggle matSuffix [for] = "pickerstartDate"></mat-datepicker-toggle>
+                                        <mat-datepicker #pickerstartDate></mat-datepicker>
+                                   </mat-form-field> </div>
+                                   <div class="col-md-2">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput [matDatepicker] = "pickerEndDate" id="endDate" ng-model-options="{timezone: 'ist'}"  placeholder = "End Date" [(ngModel)]="studentSearch.endDate" name="endDate">
+                                        <mat-datepicker-toggle matSuffix [for] = "pickerEndDate"></mat-datepicker-toggle>
+                                        <mat-datepicker #pickerEndDate></mat-datepicker>
+                                   </mat-form-field> 
+                                  </div>
+                                  <div class="col-md-2">  <mat-form-field class="example-full-width"> <mat-label >Referenced By</mat-label>
+                                    <mat-select  name="reference" id="reference" [(ngModel)]="studentSearch.reference">
+                                        <mat-option *ngFor="let reference of references" [value]="reference.Name" >
+                                            {{ reference.Code }}
+                                       </mat-option> </mat-select></mat-form-field>
+                                  </div>
+                                  <div class="col-md-2">  <mat-form-field class="example-full-width"> <mat-label >Result</mat-label>
+                                    <mat-select  name="Result" id="Result" [(ngModel)]="studentSearch.result">
+                                        <mat-option *ngFor="let res of result" [value]="res.Name" >
+                                            {{ res.Code }}
+                                       </mat-option> </mat-select></mat-form-field>
+                                  </div>
+                                  <div class="col-md-1"><button mat-raised-button type="button" (click)="searchStudent()" class="btn btn-danger pull-left">Search</button></div>
+                                    <div class="col-md-1"> <button mat-raised-button type="button"  (click)="reset()" matTooltip="Clear" [matTooltipPosition]="'below'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                        <i class="material-icons">clear_all</i>
+                                    </button> 
+                                </div>
+                                </div>
+                                <button mat-raised-button type="button" [routerLink]="['/createStudent']" class="btn btn-danger pull-left">Add Student</button>
+                                    
+                                
+                                <div class="col-md-10 pull-right">
+                                    <pagination-controls 
+                                        (pageChange)="pageChanged($event)"
+                                       ></pagination-controls>
+                                    </div>
+                
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>Student Name</th>
+                                    <th>Driving License</th>
+                                    <th>Course</th>
+                                    <th>Registration Date</th>
+                                    <th>Result</th>
+                                    <th>References</th>
+                                    <th >Action</th>
+                                </thead>
+                                <tbody>
+                                        <tr *ngFor="let student of students | async | paginate: config">
+                                            <td *ngIf="student.id==null" scope="row">{{student.id}}</td>
+                                            <td title="{{student.lastName}} , {{student.middleName}} {{student.firstName}}">{{student.lastName}},{{student.firstName}}</td>
+                                            <td>{{student.license}}</td>
+                                            <td >{{student.course}}</td>
+                                            <td>{{student.registrationDate | date : "d MMM y"}}</td>
+                                            <td *ngIf="student.studentResult!=null">{{student.studentResult.result}}</td>
+                                            <td *ngIf="student.studentResult==null">NA</td>
+                                            <td>{{student.reference}}</td>
+                                            <!-- <td>{{student.modifiedDate}}</td> -->
+                                           
+                                        <td class="td-actions text-left">
+                                                <button mat-raised-button type="button" [routerLink]="['/editStudent', student.id]" [queryParams]="{ page: config.currentPage}" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">edit</i>
+                                                </button>
+                                                <button mat-raised-button type="button"  (click)="deleteStudent(student.id)" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">close</i>
+                                                </button>
+                                                <button mat-raised-button type="button" [routerLink]="['/viewStudent', student.id]" matTooltip="Log Details" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">view_module</i>
+                                                </button>
+                                            </td>
+                                    </tr>
+                                    <input (change)="onUpload($event)"  type="file" id="file"> 
+                                    <button mat-raised-button type="file"   (click)="import()" class="btn btn-danger pull-left">Upload</button>        
+                                
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  

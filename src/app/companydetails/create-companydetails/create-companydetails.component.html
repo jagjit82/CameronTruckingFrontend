@@ -1,0 +1,52 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header card-header-success">
+                      <h4 class="card-title">Add Company Details</h4>
+                      <p class="card-category">Please fill in the Company Details</p>
+                  </div>
+                  <div class="card-body">
+                      <form (ngSubmit)="onSubmit()">
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                              <!-- <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Insurance Expiry Date" type="text" id="insuranceDate" required [(ngModel)]="vehicleLog.insuranceDate" name="insuranceDate">
+                              </mat-form-field> -->
+                              <mat-form-field class="example-full-width">
+                                <input matInput [matDatepicker] = "pickerbusinessLicense"  id="businessLicense"  ng-model-options="{timezone: 'ist'}" placeholder = "Business License" [(ngModel)]="companyDetails.businessLicense" name="businessLicense">
+                                <mat-datepicker-toggle matSuffix [for] = "pickerbusinessLicense"></mat-datepicker-toggle>
+                                <mat-datepicker #pickerbusinessLicense></mat-datepicker>
+                              </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                              <!-- <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Insurance Expiry Date" type="text" id="insuranceDate" required [(ngModel)]="vehicleLog.insuranceDate" name="insuranceDate">
+                              </mat-form-field> -->
+                              <mat-form-field class="example-full-width">
+                                <input matInput [matDatepicker] = "pickerschoolLicense"  id="schoolLicense"  ng-model-options="{timezone: 'ist'}" placeholder = "School License" [(ngModel)]="companyDetails.schoolLicense" name="schoolLicense">
+                                <mat-datepicker-toggle matSuffix [for] = "pickerschoolLicense"></mat-datepicker-toggle>
+                                <mat-datepicker #pickerschoolLicense></mat-datepicker>
+                              </mat-form-field>
+                            </div>
+                        </div>
+                        
+                  
+                          <button mat-raised-button type="submit" class="btn btn-success pull-right">Save</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  
+              </div>
+          </div>
+          
+      </div>
+  </div>
+  
+</div>
+</div>
+
+

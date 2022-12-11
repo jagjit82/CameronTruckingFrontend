@@ -1,0 +1,51 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title mt-0"> View Employee Hourly  Details</h4>
+                        <p class="card-category"> Employee Hourly Logss </p>
+                    </div>
+                    <div class="card-body">
+                            
+                        <div class="table-responsive">
+                            <button mat-raised-button type="button" [routerLink]="['/addEmployeeHourLog']" class="btn btn-danger pull-left">Add Employee Hourly Logs</button>
+                
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>Student</th>
+                                    <th>Hours</th>
+                                    <th>Log Date</th>
+                                    <th>Remarks</th>
+                                    <th >Action</th>
+                                </thead>
+                                <tbody>
+                                        <tr *ngFor="let employeeHourLog of employeeHourLogs">
+                                            <td >{{employeeHourLog.employeeUser.lastName}},{{employeeHourLog.employeeUser.firstName}}</td>
+                                            <td>{{employeeHourLog.hours}}</td>
+                                            <td>{{employeeHourLog.logDate | date : "d MMM y"}}</td>
+                                            <td>{{employeeHourLog.remarks}}</td>
+                                            <!-- <td>{{employee.modifiedDate}}</td> -->
+                                           
+                                        <td class="td-actions text-left">
+                                                <button mat-raised-button type="button" [routerLink]="['/editEmployeeHourLog', employeeHourLog.id]" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">edit</i>
+                                                </button>
+                                                <button mat-raised-button type="button"  (click)="deleteEmployeeHourLog(employeeHourLog.id)" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">close</i>
+                                                </button>
+                                                
+                                            </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  

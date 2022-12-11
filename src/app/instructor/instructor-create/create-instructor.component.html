@@ -1,0 +1,163 @@
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Create Instructor</h4>
+                        <p class="card-category">Please fill in the Instructor details</p>
+                    </div>
+                    <div class="card-body">
+                        <form (ngSubmit)="onSubmit()">
+                            <div class="row">
+                                
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="First Name" id="firstName" required [(ngModel)]="instructor.firstName" name="firstName">
+                                    </mat-form-field> </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Last Name" type="text" id="lastName" required [(ngModel)]="instructor.lastName" name="lastName">
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Instructor License No" type="text" id="instructorLicenseNum" required [(ngModel)]="instructor.instructorLicenseNum" name="instructorLicenseNum">
+                                      </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput [matDatepicker] = "pickerInstLic"  id="instructorLicenceExp" (dateChange)="instructorLicenceExp()" ng-model-options="{timezone: 'ist'}" placeholder = "Instructor License Expiry" [(ngModel)]="instructor.instructorLicenceExp" name="instructorLicenceExp">
+                                      <mat-datepicker-toggle matSuffix [for] = "pickerInstLic"></mat-datepicker-toggle>
+                                      <mat-datepicker #pickerInstLic></mat-datepicker>
+                                    </mat-form-field>
+                                  </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput [matDatepicker] = "pickerDateOfJoining"  id="dateOfJoining" ng-model-options="{timezone: 'ist'}" placeholder = "Date of Joining" [(ngModel)]="instructor.dateOfJoining" name="dateOfJoining">
+                                    <mat-datepicker-toggle matSuffix [for] = "pickerDateOfJoining"></mat-datepicker-toggle>
+                                    <mat-datepicker #pickerDateOfJoining></mat-datepicker>
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Instruction Type" type="text" id="instructionType" required [(ngModel)]="instructor.instructionType" name="instructionType">
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Operator License Number" type="text" id="operatorLicenseNum" required [(ngModel)]="instructor.operatorLicenseNum" name="operatorLicenseNum">
+                                </mat-form-field>
+                              </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                <input matInput [matDatepicker] = "pickerOperatorLicExp"  id="operatorLicenceExp" (dateChange)="operatorLicenceExp()" ng-model-options="{timezone: 'ist'}" placeholder = "Operator License Expiry" [(ngModel)]="instructor.operatorLicenceExp" name="operatorLicenceExp">
+                                <mat-datepicker-toggle matSuffix [for] = "pickerOperatorLicExp"></mat-datepicker-toggle>
+                                <mat-datepicker #pickerOperatorLicExp></mat-datepicker>
+                              </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Operator License Class" type="text" id="operatorLicenceClass" required [(ngModel)]="instructor.operatorLicenceClass" name="operatorLicenceClass">
+                            </mat-form-field>
+                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Address" type="text" id="address" required [(ngModel)]="instructor.address" name="address">
+                          </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+                          <input matInput placeholder="Phone" type="text" id="phone" required [(ngModel)]="instructor.phone" name="phone">
+                        </mat-form-field>
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Emergency Contact" type="text" id="emergencyContact" required [(ngModel)]="instructor.emergencyContact" name="emergencyContact">
+                      </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Email" type="text" id="email" required [(ngModel)]="instructor.email" name="email">
+                    </mat-form-field>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Medical Conditions" type="text" id="medicalConditions" required [(ngModel)]="instructor.medicalConditions" name="medicalConditions">
+                  </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Class of Instructions" type="text" id="classOfInstructions" required [(ngModel)]="instructor.classOfInstructions" name="classOfInstructions">
+                </mat-form-field>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Class of Driver License" type="text" id="classOfDriverLicense" required [(ngModel)]="instructor.classOfDriverLicense" name="classOfDriverLicense">
+              </mat-form-field>
+            </div>
+        </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <mat-form-field class="example-full-width">
+                            <input matInput [matDatepicker] = "pickerInsDateMonitor"  id="instructorMonitoredDate" (dateChange)="instructorMonitoredDate()" ng-model-options="{timezone: 'ist'}" placeholder = "Date Instructor Last Monitored" [(ngModel)]="instructor.instructorMonitoredDate" name="instructorMonitoredDate">
+                            <mat-datepicker-toggle matSuffix [for] = "pickerInsDateMonitor"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerInsDateMonitor></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+                          <input matInput [matDatepicker] = "pickerDOB"  id="dateOfBirth" (dateChange)="dateOfBirth()" ng-model-options="{timezone: 'ist'}" placeholder = "Date of birth" [(ngModel)]="instructor.dateOfBirth" name="dateOfBirth">
+                          <mat-datepicker-toggle matSuffix [for] = "pickerDOB"></mat-datepicker-toggle>
+                          <mat-datepicker #pickerDOB></mat-datepicker>
+                        </mat-form-field>
+                      </div>
+                  </div>
+                            <button mat-raised-button type="submit" class="btn btn-success pull-right">Save</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+  </div>
+  </div>
+  
+  
+  

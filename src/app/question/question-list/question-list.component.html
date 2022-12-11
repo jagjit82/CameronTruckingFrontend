@@ -1,0 +1,119 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title mt-0"> View Questions </h4>
+                        <p class="card-category"> {{company}}</p>
+                    </div>
+                    <div class="card-body">
+                              <button mat-raised-button type="button"  data-toggle="modal" data-target="#questionModal" class="btn btn-danger pull-left">Create</button>
+                              <div class="col-md-10 pull-right">
+                                <pagination-controls 
+                                    (pageChange)="pageChanged($event)"
+                                   ></pagination-controls>
+                                </div>
+                                <!-- <button mat-raised-button type="file"   (click)="fileInput.click()" class="btn btn-danger pull-right">Importee</button>        
+                                <button mat-raised-button type="button"   (click)="export()" class="btn btn-danger pull-right">Export</button>       
+                                <input hidden (change)="onUpload($event)" #fileInput type="file" id="file"> -->
+                                <button mat-raised-button type="button"   (click)="export()" class="btn btn-danger pull-right">Export</button>       
+                                <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        Test Name
+                                    </th>
+                                    <th>
+                                        Question
+                                    </th>
+                                    <th>
+                                      Correct Answer 
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let question of questions  | paginate: config">
+                                         <td >{{question.test.name}}</td>
+                                         <td >{{question.questn}}</td>
+                                         <td >{{question.correctAnswer}}</td>
+                                         <!-- <td><a href="#" [routerLink]="['/editDiesel', question.id]" class="btn-white btn btn-xs">Edit</a> -->
+                                        <!-- <button (click)="deleteDiesel(question.id)">Delete</button></td> -->
+                                        <td class="td-actions text-left">
+                                                <!-- <button mat-raised-button type="button" [routerLink]="['/editQuestion', question.id]" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">edit</i>
+                                                </button> -->
+                                                <!--<button mat-raised-button type="button" [routerLink]="['/viewDiesel', question.id]" matTooltip="Diesel Details" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">view_module</i>
+                                                </button>
+                                            -->
+                                                <button  mat-raised-button  type="button" (click)="deleteQuestion(question.id)" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i  class="material-icons">close</i>
+                                                </button>
+                                                  <button mat-raised-button type="button" [routerLink]="['/editQuestion', question.id]" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">edit</i>
+                                                </button>
+                                                <button mat-raised-button type type="button" (click)="viewQuestion(question)" class="btn btn-info btn-round btn-sm" data-toggle="modal" data-target="#viewQuestion">
+                                                    View Question
+                                                  </button>
+                                            
+                                              </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-body">
+                        <input (change)="onUpload($event)" type="file" id="file"> </div>
+                        <button mat-raised-button type="file"   (click)="import()" class="btn btn-danger pull-left">Upload</button>        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+
+
+  <div class="modal fade" id="questionModal" tabindex="-1" role="dialog" aria-labelledby="viewRoadTestLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+                     <app-create-question></app-create-question>
+            
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="viewQuestion" tabindex="-1" role="dialog" aria-labelledby="viewQuestionLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-body">
+            <table class="table table-hover">
+              <tbody>       
+            <tr><td><b>Test Name:</b></td><td >{{question1.test.name}}</td></tr>      
+              <tr><td><b>Question:</b></td><td >{{question1.questn}}</td></tr>  
+             <tr><td><b>Option A:</b></td><td >{{question1.optionA}}</td></tr>  
+               <tr><td><b>Option B:</b></td><td >{{question1.optionB}}</td></tr>  
+                <tr><td><b>Option C:</b></td> <td >{{question1.optionC}}</td></tr>  
+                <tr><td><b>Option D:</b></td><td >{{question1.optionD}}</td></tr>  
+                <tr><td><b>Correct Answer:</b></td><td >{{question1.correctAnswer}}</td></tr>  
+              </tbody>
+          </table>
+
+          </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  

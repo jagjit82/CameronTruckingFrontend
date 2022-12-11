@@ -1,0 +1,84 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header card-header-success">
+                      <h4 class="card-title">Create Phone Log</h4>
+                      <p class="card-category">Please fill in the Phone Logs</p>
+                  </div>
+                  <div class="card-body">
+                      <form (ngSubmit)="onSubmit()">
+                        
+                      <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Phone Number"  id="phoneNo" required [(ngModel)]="phoneLog.phoneNo" name="phoneNo">
+                            </mat-form-field> </div>
+                        </div>
+                      <div class="row">
+                      <div class="col-md-6">
+                          <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Caller Name"  id="name" required [(ngModel)]="phoneLog.name" name="name">
+                          </mat-form-field> </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3">  <mat-form-field class="example-full-width"> <mat-label >Caller Type</mat-label>
+                          <mat-select  name="callerType" id="callerType" [(ngModel)]="phoneLog.callerType">
+                              <mat-option *ngFor="let call of callerTypeLs" [value]="call.Name" >
+                                  {{ call.Code }}
+                             </mat-option> </mat-select></mat-form-field>
+                        </div>
+                    </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Reason to Call"  id="reason" required [(ngModel)]="phoneLog.reason" name="reason">
+                            </mat-form-field> </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Additional Comments"  id="comments" required [(ngModel)]="phoneLog.comments" name="comments">
+                              </mat-form-field> </div>
+                          </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <!-- <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Insurance Expiry Date" type="text" id="insuranceDate" required [(ngModel)]="phoneLog.insuranceDate" name="insuranceDate">
+                          </mat-form-field> -->
+                          <mat-form-field class="example-full-width">
+                            <input matInput [matDatepicker] = "pickertcallDate"  id="callDate"  ng-model-options="{timezone: ist}" placeholder = "Call Date" [(ngModel)]="phoneLog.callDate" name="callDate">
+                            <mat-datepicker-toggle matSuffix [for] = "pickertcallDate"></mat-datepicker-toggle>
+                            <mat-datepicker #pickertcallDate></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                          <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Call Time (eg 12:30)"  id="callTime" required [(ngModel)]="phoneLog.callTime" name="callTime">
+                          </mat-form-field> </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">  <mat-form-field class="example-full-width"> <mat-label >Status</mat-label>
+                          <mat-select  name="status" id="status" [(ngModel)]="phoneLog.status">
+                              <mat-option *ngFor="let status of statusLs" [value]="status.Name" >
+                                  {{ status.Code }}
+                             </mat-option> </mat-select></mat-form-field>
+                        </div>
+                    </div>
+                          <button mat-raised-button type="submit" class="btn btn-success pull-right">Save</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  
+              </div>
+          </div>
+          
+      </div>
+  </div>
+  
+</div>
+</div>
+
+

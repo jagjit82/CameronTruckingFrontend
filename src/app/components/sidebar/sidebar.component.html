@@ -1,0 +1,126 @@
+<div class="logo">
+    <a href="#" class="simple-text">
+        <!-- <div class="logo-img">
+            <img src="/assets/img/angular2-logo-red.png"/>
+        </div> -->
+       <b>{{company}} </b>
+    </a>
+       <b><a style="padding-left: 40px">  Welcome ,{{user}}</a></b>
+        
+    </div>
+        
+
+<div class="sidebar-wrapper">
+  <div *ngIf="isMobileMenu()">
+    <form class="navbar-form">
+      <span class="bmd-form-group">
+        <div class="input-group no-border">
+          <input type="text" value="" class="form-control" placeholder="Search...">
+          <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
+            <i class="material-icons">search</i>
+            <div class="ripple-container"></div>
+          </button>
+        </div>
+      </span>
+    </form>
+    <ul class="nav navbar-nav nav-mobile-menu">
+        <li class="nav-item">
+            <a class="nav-link" href="#pablo">
+                <i class="material-icons">dashboard</i>
+                <p>
+                    <span class="d-lg-none d-md-block">Stats</span>
+                </p>
+            </a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link" href="#pablo" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="material-icons">notifications</i>
+                <span class="notification">5</span>
+                <p>
+                    <span class="d-lg-none d-md-block">Some Actions</span>
+                </p>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Mike John responded to your email</a>
+                <a class="dropdown-item" href="#">You have 5 new tasks</a>
+                <a class="dropdown-item" href="#">You're now friend with Andrew</a>
+                <a class="dropdown-item" href="#">Another Notification</a>
+                <a class="dropdown-item" href="#">Another One</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link" href="#pablo" id="navbarDropdownMenuPerson" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="material-icons">person</i>
+                <p>
+                    <span class="d-lg-none d-md-block">Account</span>
+                </p>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuPerson">
+                    <a class="dropdown-item" href="#">Log out</a>
+                </div>
+        </li>
+    </ul>
+  </div>
+    <ul class="nav">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+            <!-- <a class="nav-link" [routerLink]="[menuItem.path]" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="material-icons">{{menuItem.icon}}</i>
+                <p>{{menuItem.title}}</p>
+                
+            </a>  -->
+            <a class="nav-link" [routerLink]="[menuItem.path]" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="material-icons">{{menuItem.icon}}</i>
+                <p>{{menuItem.title}}</p>
+                
+            </a>   
+             <div  class="dropdown-menu dropdown-menu-right" *ngIf="menuItem.class=='Vehicle'" aria-labelledby="navbarDropdownMenuLink">
+                <!-- <a class="dropdown-item" [routerLink]="'/addVehicle'">Add Vehicle</a> -->
+                <!-- <a class="dropdown-item" [routerLink]="'/listVehicle'">View Vehicle</a> -->
+                <a class="dropdown-item" [routerLink]="'/listVehicleLog'">Vehicle Repair</a>
+                <a class="dropdown-item" [routerLink]="'/listDieselLog'">Diesel Log</a>
+    
+            </div>
+            <div  class="dropdown-menu dropdown-menu-right" *ngIf="menuItem.class=='instructor'" aria-labelledby="navbarDropdownMenuLink">
+                    <!-- <a class="dropdown-item" [routerLink]="'/addinstructor'">Add Instructor</a> -->
+                    <a class="dropdown-item" [routerLink]="'/instructorMonitorings'">Instructor Monitor</a>
+                    <a class="dropdown-item" [routerLink]="'/instructorTrainings'">Instructor Training</a>
+                    <a class="dropdown-item" [routerLink]="'/instructorLog'">Instructor Log</a>
+                    <!-- <a class="dropdown-item" [routerLink]="'/instructors'">View Instructor</a> -->
+                </div>
+                <div  class="dropdown-menu dropdown-menu-right" *ngIf="menuItem.class=='student'" aria-labelledby="navbarDropdownMenuLink">
+                 <a class="dropdown-item" [routerLink]="'/studentPayments'">Student Payments</a>
+                 <a class="dropdown-item" [routerLink]="'/studentResult'">Student Result</a>
+                 <a class="dropdown-item" [routerLink]="'/studenCourse'">Student Course</a>
+                 <a class="dropdown-item" [routerLink]="'/studentLog'">Student Log</a>
+                </div>
+            <div  class="dropdown-menu dropdown-menu-right" *ngIf="menuItem.class=='employees'" aria-labelledby="navbarDropdownMenuLink">
+                <!-- <a class="dropdown-item" [routerLink]="'/addEmployee'">Add Employee</a> -->
+                <a class="dropdown-item" [routerLink]="'/employeeHourLogs'">View Employee Hour Log</a> 
+                
+            </div>
+            <div  class="dropdown-menu dropdown-menu-right" *ngIf="menuItem.class=='phone'" aria-labelledby="navbarDropdownMenuLink">
+                <!-- <a class="dropdown-item" [routerLink]="'/addEmployee'">Add Employee</a> -->
+                <!-- <a class="dropdown-item" [routerLink]="'/employees'">View Employee</a> -->
+                
+            </div>
+            <div  class="dropdown-menu dropdown-menu-right" *ngIf="menuItem.class=='exam'" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" [routerLink]="'/tests'">Test</a>
+                <a class="dropdown-item" [routerLink]="'/questions'">Questions</a>
+                <a class="dropdown-item" [routerLink]="'/testresult'">Test Result</a>
+                
+            </div>
+            <div  class="dropdown-menu dropdown-menu-right" *ngIf="menuItem.class=='activity'" aria-labelledby="navbarDropdownMenuLink">
+                <!-- <a class="dropdown-item" [routerLink]="'/addEmployee'">Add Employee</a> -->
+                <!-- <a class="dropdown-item" [routerLink]="'/employees'">View Employee</a> -->
+                
+            </div>
+            <div  class="dropdown-menu dropdown-menu-right" *ngIf="menuItem.class=='expense'" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" [routerLink]="'/expenseLogs'">Expense Income Log</a>
+                <!-- <a class="dropdown-item" [routerLink]="'/employees'">View Employee</a> -->
+                
+            </div>
+            
+        </li>
+   
+    </ul>
+</div>

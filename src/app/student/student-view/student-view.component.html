@@ -1,0 +1,143 @@
+<div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto">
+                    <div class="card">
+                        <div class="card-header card-header-success">
+                            <h4 class="card-title">Student</h4>
+                            <p class="card-category">View screen for detail data</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive table-upgrade">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center"><small>Field</small></th>
+                                            <th class="text-center"><small>Value</small></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center text-success">Name</td>
+                                            <td class="text-center">{{student.lastName}} , {{student.middleName}} {{student.firstName}}</td>
+                                        </tr>
+                                       
+                                        <tr>
+                                            <td class="text-center text-success">Address</td>
+                                            <td class="text-center">{{student.address}}</td>
+                                        </tr>
+                                         
+                                        <tr>
+                                            <td class="text-center text-success">City</td>
+                                            <td class="text-center">{{student.city}}</td>
+                                        
+                                        <tr>
+                                            <td class="text-center text-success">Postal Code</td>
+                                            <td class="text-center">{{student.postalCode}}</td>
+                                        </tr>
+                                       
+                                        <tr>
+                                            <td class="text-center text-success">Phone</td>
+                                            <td class="text-center">{{student.phoneNo}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center text-success">Emergency Contact</td>
+                                            <td class="text-center" >{{student.emergencyContact}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center text-success">Email</td>
+                                            <td class="text-center">{{student.email}}</td>
+                                        </tr>
+                                        <tr>
+                                                <td class="text-center text-success">License Number</td>
+                                                <td class="text-center">{{student.license}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center text-success">License Expiry Date</td>
+                                                <td class="text-center">{{student.licenseExpiry | date : "d MMM y"}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center text-success">Birth Date</td>
+                                                <td class="text-center">{{student.dateOfBirth | date : "d MMM y"}}</td>
+                                            </tr>
+                                            <tr>
+                                                    <td class="text-center text-success">Preffered Hours</td>
+                                                    <td class="text-center">{{student.prefferedHours}}</td>
+                                            </tr>  
+                               
+                                            <tr>
+                                                        <td class="text-center text-success">From Class</td>
+                                                        <td class="text-center">{{student.fromClass}}</td>
+                                            </tr> 
+                                            <tr>
+                                                            <td class="text-center text-success">To Class</td>
+                                                            <td class="text-center">{{student.toClass}}</td>
+                                            </tr>
+                                            <tr>
+                                                                <td class="text-center text-success">Course</td>
+                                                                <td class="text-center">{{student.course}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center text-success">References</td>
+                                                <td class="text-center">{{student.reference}}</td>
+                                            </tr>    
+                                            <tr>
+                                                <td class="text-center text-success">EndorsementQ</td>
+                                                <td class="text-center">{{student.endorsementQ}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center text-success">Payment Mode</td>
+                                                <td class="text-center">{{student.paymentMode}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center text-success">Invoice</td>
+                                                <td class="text-center">{{student.invoice}}</td>
+                                            </tr>
+                                            <tr>
+                                                            <td class="text-center text-success">Funding Agency</td>
+                                                             <td class="text-center">{{student.fundingAgency}}</td>
+                                           </tr>
+                                           <tr>
+                                                <td class="text-center text-success">Total Amount ($)</td>
+                                                <td class="text-center">{{student.totalAmount}}</td>
+                                            </tr>
+                                            <tr>
+                                                                <td class="text-center text-success">Payments Received ($)</td>
+                                                                <td class="text-center">{{student.paymentsReceived}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center text-success">Discount</td>
+                                                <td class="text-center">{{student.discount}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center text-success">Net Pay post Discount</td>
+                                                <td class="text-center">{{postDiscount}}</td>
+                                            </tr>
+                            
+                                            <tr>
+                                                                <td class="text-center text-success">Created Date</td>
+                                                                <td class="text-center">{{student.createdDate | date : "d MMM y, hh:mm:ss a"}}</td>
+                                            </tr>    
+                                            <tr>
+                                                    <td class="text-center text-success">Modified Date</td>
+                                                    <td class="text-center">{{student.modifiedDate | date : "d MMM y, hh:mm:ss a"}}</td>
+                                            </tr>
+                                      
+                                        <tr>
+                                            <td class="text-center"></td>
+                                            <td class="text-center">
+                                                <a [routerLink]="['/students']" class="btn btn-round btn-fill btn-info">Go Back</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+

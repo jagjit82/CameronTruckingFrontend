@@ -1,0 +1,79 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title mt-0"> View Activity Logs </h4>
+                        <p class="card-category"> {{company}}</p>
+                    </div>
+                    <div class="card-body">
+                              <button mat-raised-button type="button"  data-toggle="modal" data-target="#exampleModal" class="btn btn-danger pull-left">Add Activity Log</button>
+                  
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        Category
+                                    </th>
+                                    <th>
+                                        Activity
+                                    </th>
+                                    <th>
+                                        Additional Comments
+                                    </th>
+                                    <th>
+                                        Reported By
+                                    </th>
+                                    
+                                    <th>
+                                        Activity Date 
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let activityLog of activityLogs">
+                                         <td >{{activityLog.category}}</td>
+                                         <td >{{activityLog.activity}}</td>
+                                         <td >{{activityLog.comments}}</td>
+                                         <td >{{activityLog.reportedBy}}</td>
+                                         <td>{{activityLog.activityDate | date : "d MMM y"}}</td>
+                                         <!-- <td><a href="#" [routerLink]="['/editDiesel', activityLog.id]" class="btn-white btn btn-xs">Edit</a> -->
+                                        <!-- <button (click)="deleteDiesel(activityLog.id)">Delete</button></td> -->
+                                        <td class="td-actions text-left">
+                                                <button mat-raised-button type="button" [routerLink]="['/editActivityLog', activityLog.id]" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">edit</i>
+                                                </button>
+                                                <!--<button mat-raised-button type="button" [routerLink]="['/viewDiesel', activityLog.id]" matTooltip="Diesel Details" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">view_module</i>
+                                                </button>
+                                            -->
+                                                <button  mat-raised-button  type="button" (click)="deleteActivityLog(activityLog.id)" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i  class="material-icons">close</i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                            <button mat-raised-button type="submit" (click)="exportDiesel()" class="btn btn-success pull-right">Export</button>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="viewRoadTestLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+                     <app-create-activitylog></app-create-activitylog>
+            
+      </div>
+    </div>
+  </div>

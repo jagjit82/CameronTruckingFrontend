@@ -1,0 +1,73 @@
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Create Student Result</h4>
+                        <p class="card-category">Please fill in the Student Result details</p>
+                    </div>
+                    <div class="card-body">
+                        <form (ngSubmit)="onSubmit()">
+                          <div class="row">
+                            <div class="col-md-6" *ngIf="studentResult.id!=null"> <mat-form-field class="example-full-width">  <mat-label>Students</mat-label>
+                                <mat-select  name="studentResult" id="studentResult"  [(ngModel)]="studentResult.student.id" (selectionChange)="onChange(studentResult.student)">
+                                    <mat-option *ngFor="let stud of students | async" [value]="stud.id" >
+                                      {{ stud.lastName }},{{ stud.firstName }}
+                                   </mat-option> 
+                                   </mat-select>
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-6" *ngIf="studentResult.id==null"> <mat-form-field class="example-full-width">  <mat-label>Students</mat-label>
+                                  <mat-select  name="studentResult" id="studentResult"  [(ngModel)]="studentResult.student" (selectionChange)="onChange(studentResult.student)">
+                                      <mat-option *ngFor="let stud of students | async" [value]="stud" >
+                                        {{ stud.lastName }},{{ stud.firstName }}
+                                     </mat-option> 
+                                     </mat-select>
+                                    </mat-form-field>
+                                  </div>
+                              </div>
+                                <div class="row">
+                                <div class="col-md-6">  <mat-form-field class="example-full-width"> <mat-label >Result</mat-label>
+                                  <mat-select  name="Result" id="Result" [(ngModel)]="studentResult.result">
+                                      <mat-option *ngFor="let res of result" [value]="res.Name" >
+                                          {{ res.Code }}
+                                     </mat-option> </mat-select></mat-form-field>
+                                </div>
+                              </div>
+                        
+                        <div class="row">
+                          <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Remarks" type="text" id="remarks" required [(ngModel)]="studentResult.remarks" name="remarks">
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput [matDatepicker] = "pickerresultDate" id="resultDate" ng-model-options="{timezone: 'ist'}"  placeholder = "Result Date" [(ngModel)]="studentResult.resultDate" name="resultDate">
+                                        <mat-datepicker-toggle matSuffix [for] = "pickerresultDate"></mat-datepicker-toggle>
+                                        <mat-datepicker #pickerresultDate></mat-datepicker>
+                                   </mat-form-field> 
+                                  
+                                  </div>
+                            
+                          </div>
+                            <button mat-raised-button type="submit" class="btn btn-success pull-right">Save</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+  </div>
+  </div>
+  
+  
+  
+

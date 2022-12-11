@@ -1,0 +1,73 @@
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Create EmployeeHourLog Result</h4>
+                        <p class="card-category">Please fill in the EmployeeHourLog Result details</p>
+                    </div>
+                    <div class="card-body">
+                        <form (ngSubmit)="onSubmit()">
+                          <div class="row">
+                            <div class="col-md-6" *ngIf="employeeHourLog.id!=null"> <mat-form-field class="example-full-width">  <mat-label>Employee Hour Logs</mat-label>
+                                <mat-select  name="employeeHourLog" id="employeeHourLog"  [(ngModel)]="employeeHourLog.employeeUser.id" (selectionChange)="onChange(employeeHourLog.employeeUser)">
+                                    <mat-option *ngFor="let employee of employees | async" [value]="employee.id" >
+                                      {{ employee.firstName }},{{ employee.lastName }}
+                                   </mat-option> 
+                                   </mat-select>
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-6" *ngIf="employeeHourLog.id==null"> <mat-form-field class="example-full-width">  <mat-label>Employee Hour Logs</mat-label>
+                                  <mat-select  name="employeeHourLog" id="employeeHourLog"  [(ngModel)]="employeeHourLog.employeeUser" (selectionChange)="onChange(employeeHourLog.employeeUser)">
+                                      <mat-option *ngFor="let employee of employees | async" [value]="employee" >
+                                        {{ employee.firstName }},{{ employee.lastName }}
+                                     </mat-option> 
+                                     </mat-select>
+                                    </mat-form-field>
+                                  </div>
+                              </div>
+                              
+                              
+                        <div class="row">
+                          <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Hours" type="text" id="hours" required [(ngModel)]="employeeHourLog.hours" name="hours">
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Remarks" type="text" id="remarks" required [(ngModel)]="employeeHourLog.remarks" name="remarks">
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput [matDatepicker] = "pickerlogDate" id="logDate" ng-model-options="{timezone: 'ist'}"  placeholder = "Hour Log Date" [(ngModel)]="employeeHourLog.logDate" name="logDate">
+                                        <mat-datepicker-toggle matSuffix [for] = "pickerlogDate"></mat-datepicker-toggle>
+                                        <mat-datepicker #pickerlogDate></mat-datepicker>
+                                   </mat-form-field> 
+                                  
+                                  </div>
+                            
+                          </div>
+                            <button mat-raised-button type="submit" class="btn btn-success pull-right">Save</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+  </div>
+  </div>
+  
+  
+  
+

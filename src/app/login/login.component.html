@@ -1,0 +1,76 @@
+<div class="main-content" >
+    <div class="container-fluid">
+        <div class="row">
+                <div class="col-md-4" style="padding-top: 150px">
+                        <div class="card card-profile">
+                            <div class="card-avatar">
+                                <a href="#pablo">
+                                    <img class="img" src="./assets/img/faces/CamerionDriver.jpg" />
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-category text-gray">Our Fleet Service</h4>
+                                <h4 class="card-category text-gray">and goals</h4>
+                                <p class="card-description" style="padding-top: 13px">
+                                        Cameron Driver Education and Donovan Driver Education.Futher details will come here......
+                                    </p>
+                                <a href="#" class="btn btn-success btn-round">Follow</a>
+                            </div>
+                        </div>
+                    </div>
+            <div class="col-md-8" style="padding-top: 150px">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h3 class="card-title">Welcome to Cameron Driver Education</h3>
+                        <p class="card-category">Login in. To see it in action</p>
+                    </div>
+                    <div class="card-body">
+                        <form (ngSubmit)="onSubmit()">
+                            <div class="row">
+                                
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Username" id="username" required [(ngModel)]="username" name="username">
+                                    </mat-form-field> </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Password" type="password" id="password" required [(ngModel)]="password" name="password">
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">  <mat-form-field class="example-full-width"> <mat-label >Company</mat-label>
+                                  <mat-select  name="company" id="company" [(ngModel)]="company" (selectionChange)="change()">
+                                      <mat-option *ngFor="let company of companyList" [value]="company" >
+                                          {{ company.company }}
+                                     </mat-option> </mat-select></mat-form-field>
+                                </div>
+                            </div>
+                            <button mat-raised-button type="button"  (click)=checkLogin() class="btn btn-success pull-center">Login</button>
+                            <div class="clearfix"></div>
+                        </form>
+                        <div class="card-footer" style="padding-top: 20px">
+                                <div class="stats">
+                                    <i class="material-icons">local_shipping</i> Forgot Password ?
+                                </div>
+                            </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons">access_time</i><h5><b>Cameron Driver Education </b></h5>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+  </div>
+  </div>
+  
+  
+  
+
+

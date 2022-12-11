@@ -1,0 +1,48 @@
+<div class="main-content" *ngIf="students?.length > 0">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title mt-0"> Approve Student </h4>
+                    </div>
+                    <div class="card-body">
+                            
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>Student Name</th>
+                                    <th>Driving License</th>
+                                    <th>Course</th>
+                                    <th>Issue Date</th>
+                                    <th>Result</th>
+                                    <th>References</th>
+                                    <th >Action</th>
+                                </thead>
+                                <tbody>
+                                        <tr *ngFor="let student of students | async">
+                                            <td title="{{student.lastName}} , {{student.middleName}} {{student.firstName}}">{{student.lastName}},{{student.firstName}}</td>
+                                            <td>{{student.license}}</td>
+                                            <td >{{student.course}}</td>
+                                            <td>{{student.issueDate | date : "d MMM y"}}</td>
+                                            <td *ngIf="student.studentResult!=null">{{student.studentResult.result}}</td>
+                                            <td *ngIf="student.studentResult==null">NA</td>
+                                            <td>{{student.reference}}</td>
+                                            <!-- <td>{{student.modifiedDate}}</td> -->
+                                           
+                                        <td class="td-actions text-left">
+                                            <button mat-raised-button type="button" (click)="deleteStudent(student.id)" class="btn btn-success pull-left">ACCEPT</button>
+                                            <button mat-raised-button type="button" (click)="rejectStudent(student.id)" class="btn btn-danger pull-left">REJECT</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  

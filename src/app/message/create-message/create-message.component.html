@@ -1,0 +1,45 @@
+<div class="main-content">
+  <div class="container-fluid">
+          <div class="col-md-16">
+              <div class="card">
+                  <div class="card-header card-header-success">
+                      <h4 class="card-title">Compose Message</h4>
+                  </div>
+                  <div class="card-body">
+                      <form (ngSubmit)="onSubmit()">
+                          <div class="row">
+                          <div class="col-md-10"> <mat-form-field class="example-full-width">  <mat-label>Receiver</mat-label>
+                            <mat-select  name="receiver" id="receiver"  [(ngModel)]="message.receiver" >
+                                <mat-option *ngFor="let emp of employees | async" [value]="emp" >
+                                  {{ emp.lastName }},{{ emp.firstName }}
+                               </mat-option> 
+                               </mat-select>
+                              </mat-form-field>
+                        </div>
+                      </div>
+                       <div class="row">
+                        <div class="col-md-10">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Subject"  id="subject" required [(ngModel)]="message.subject" name="subject">
+                            </mat-form-field> </div>
+                        </div>
+                      <div class="row">
+                      <div class="col-md-12">
+                          <mat-form-field class="example-full-width">
+                              <textarea matInput placeholder="Message"  id="body" required [(ngModel)]="message.body" rows="3" name="body"></textarea>
+                          </mat-form-field> </div>
+                      </div>
+                      
+                          <button mat-raised-button type="submit"  class="btn btn-success pull-right">Send</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  
+              </div>
+          </div>
+          
+      </div>
+  
+</div>
+</div>
+
+

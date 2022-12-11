@@ -1,0 +1,304 @@
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Create Student</h4>
+                        <p class="card-category">Please fill in the Student details</p>
+                    </div>
+                    <div class="card-body">
+                        <form (ngSubmit)="onSubmit()">
+                          <div class="row">
+                            <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="First Name" id="firstName" required [(ngModel)]="student.firstName" name="firstName">
+                                </mat-form-field> </div>
+                          <div class="col-md-3">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Middle Name" type="text" id="middleName" required [(ngModel)]="student.middleName" name="middleName">
+                            </mat-form-field>
+                          </div>
+                            <div class="col-md-3">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Last Name" type="text" id="lastName" required [(ngModel)]="student.lastName" name="lastName">
+                              </mat-form-field>
+                            </div>
+                        </div>  
+                        <div class="row">
+                          <div class="col-md-3">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Driving License" type="text" id="license" required [(ngModel)]="student.license" name="license">
+                            </mat-form-field>
+                          </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput [matDatepicker] = "pickerlicenseExpiry" id="licenseExpiry" ng-model-options="{timezone: 'ist'}"  placeholder = "License Expiry" [(ngModel)]="student.licenseExpiry" name="licenseExpiry">
+                                        <mat-datepicker-toggle matSuffix [for] = "pickerlicenseExpiry"></mat-datepicker-toggle>
+                                        <mat-datepicker #pickerlicenseExpiry></mat-datepicker>
+                                   </mat-form-field> 
+                                  
+                                  </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Address" type="text" id="address" required [(ngModel)]="student.address" name="address">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="City" type="text" id="city"  required [(ngModel)]="student.city" name="city">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Postal Code"  type="text" id="postalCode" required [(ngModel)]="student.postalCode" name="postalCode">
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-3">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Phone" id="phoneNo" required [(ngModel)]="student.phoneNo" name="phoneNo">
+                                  </mat-form-field> </div>
+                            <div class="col-md-3">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Emergency Contact" type="text" id="emergencyContact" required [(ngModel)]="student.emergencyContact" name="emergencyContact">
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Email" type="text" id="email" required [(ngModel)]="student.email" name="email">
+                              </mat-form-field>
+                            </div>
+                            </div>  
+                            <div class="row">
+                            <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                  <input matInput [matDatepicker] = "pickerdateOfBirth" id="dateOfBirth" ng-model-options="{timezone: 'ist'}"  placeholder = "Birth Date" [(ngModel)]="student.dateOfBirth" name="dateOfBirth">
+                                  <mat-datepicker-toggle matSuffix [for] = "pickerdateOfBirth"></mat-datepicker-toggle>
+                                  <mat-datepicker #pickerdateOfBirth></mat-datepicker>
+                             </mat-form-field> 
+                            
+                            </div>
+                        </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Total Training Hours" type="text" id="prefferedHours"  required [(ngModel)]="student.prefferedHours" name="prefferedHours">
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-3">  <mat-form-field class="example-full-width"> <mat-label >From Class</mat-label>
+                                <mat-select  name="From Class" id="fromClass" [(ngModel)]="student.fromClass" >
+                                    <mat-option *ngFor="let fromClass of fromClassArr" [value]="fromClass" >
+                                        {{ fromClass}}
+                                   </mat-option> </mat-select></mat-form-field>
+                              </div>
+                              <div class="col-md-3"> <mat-form-field class="example-full-width">  <mat-label>To Class</mat-label>
+                                  <mat-select  name="To Class" id="toClass" [(ngModel)]="student.toClass" >
+                                      <mat-option *ngFor="let toClass of toClassArr" [value]="toClass" >
+                                          {{ toClass}}
+                                     </mat-option> 
+                                     </mat-select></mat-form-field>
+                              </div>
+                            
+                              <div class="col-md-3">  <mat-form-field class="example-full-width"> <mat-label >Course</mat-label>
+                                <mat-select  name="Course" id="Course" [(ngModel)]="student.course">
+                                    <mat-option *ngFor="let course of courses" [value]="course.Name" >
+                                        {{ course.Code }}
+                                   </mat-option> </mat-select></mat-form-field>
+                              </div>
+                          </div>
+                          <div class="row">
+                          <div class="col-md-3">  <mat-form-field class="example-full-width"> <mat-label >References</mat-label>
+                            <mat-select  name="reference" id="reference" [(ngModel)]="student.reference">
+                                <mat-option *ngFor="let reference of references" [value]="reference.Name" >
+                                    {{ reference.Code }}
+                               </mat-option> </mat-select></mat-form-field>
+                          </div>
+                          <div class="col-md-3">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Endorsement Q" type="text" id="endorsementQ" [(ngModel)]="student.endorsementQ" name="endorsementQ">
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-3">  <mat-form-field class="example-full-width"> <mat-label >Payment Mode</mat-label>
+                            <mat-select  name="paymentMode" id="paymentMode" [(ngModel)]="student.paymentMode">
+                                <mat-option *ngFor="let paymentMode of paymentModes" [value]="paymentMode.Name" >
+                                    {{ paymentMode.Code }}
+                               </mat-option> </mat-select></mat-form-field>
+                          </div>
+                          
+                      </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Invoice" type="text"  id="invoice"  [(ngModel)]="student.invoice" name="invoice">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput [matDatepicker] = "pickerissueDate" id="issueDate" ng-model-options="{timezone: 'ist'}"  placeholder = "Issue Date" [(ngModel)]="student.issueDate" name="issueDate">
+                                      <mat-datepicker-toggle matSuffix [for] = "pickerissueDate"></mat-datepicker-toggle>
+                                      <mat-datepicker #pickerissueDate></mat-datepicker>
+                                 </mat-form-field> 
+                                
+                                </div>
+                                <div class="col-md-3">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput [matDatepicker] = "pickerregistrationDate" id="registrationDate" ng-model-options="{timezone: 'ist'}"  placeholder = "Registration Date" [(ngModel)]="student.registrationDate" name="registrationDate">
+                                      <mat-datepicker-toggle matSuffix [for] = "pickerregistrationDate"></mat-datepicker-toggle>
+                                      <mat-datepicker #pickerregistrationDate></mat-datepicker>
+                                 </mat-form-field> 
+                                
+                                </div>
+                          
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Funding Agency" type="text" id="fundingAgency"  [(ngModel)]="student.fundingAgency" name="fundingAgency" >
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Total Amount ($)" type="text" id="totalAmount"  required [(ngModel)]="student.totalAmount" name="totalAmount" >
+                                </mat-form-field>
+                              </div>
+                            <div class="col-md-3">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Payments Received ($)" type="text" id="paymentsReceived"  required [(ngModel)]="student.paymentsReceived" name="paymentsReceived" >
+                              </mat-form-field>
+                            </div>
+                        </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Discount(%)" type="text" id="discount" (blur)="calculateNetPay()" required [(ngModel)]="student.discount" name="discount" >
+                              </mat-form-field>
+                            </div>
+                        </div><div class="row">
+                          <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Net Pay post Discount" type="text" id="postDiscount"  required [(ngModel)]="postDiscount" name="postDiscount" readonly>
+                            </mat-form-field>
+                          </div>
+
+                        </div>
+                      
+                        <div class="row">
+                          <div class="col-md-3">
+                              <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Start Time (eg 12:30)"  id="startTime" required [(ngModel)]="student.startTime" name="startTime">
+                              </mat-form-field> </div>
+                            <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="End Time (eg 15:30)"  id="endTime" required [(ngModel)]="student.endTime" name="endTime">
+                                </mat-form-field> </div>
+                            </div>
+                        
+
+                        <div class="row">
+                          <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox"  name="day1" [(ngModel)]="student.day1" [checked]="true">
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
+                            </label>Monday
+                            </div>
+                        </div>
+                            <div class="row">
+                            <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox"  name="day2" [(ngModel)]="student.day2" [checked]="true">
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                  
+                                </span>
+                            </label>  Tuesday
+                        </div>
+                        </div>
+                        <div class="row">
+                          <div class="form-check">
+                          <label class="form-check-label">
+                              <input class="form-check-input" type="checkbox"  name="day3" [(ngModel)]="student.day3" [checked]="true">
+                              <span class="form-check-sign">
+                                  <span class="check"></span>
+                                
+                              </span>
+                          </label>  Wednesday
+                      </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox"  name="day4" [(ngModel)]="student.day4" [checked]="true">
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                              
+                            </span>
+                        </label>  Thursday
+                    </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="form-check">
+                      <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox"  name="day5" [(ngModel)]="student.day5" [checked]="true">
+                          <span class="form-check-sign">
+                              <span class="check"></span>
+                            
+                          </span>
+                      </label>  Friday
+                  </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox"  name="day6" [(ngModel)]="student.day6" [checked]="true">
+                        <span class="form-check-sign">
+                            <span class="check"></span>
+                          
+                        </span>
+                    </label>  Saturday
+                </div>
+                </div>
+
+                <div class="row">
+                  <div class="form-check">
+                  <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox"  name="day7" [(ngModel)]="student.day7" [checked]="true">
+                      <span class="form-check-sign">
+                          <span class="check"></span>
+                        
+                      </span>
+                  </label>  Sunday
+              </div>
+              </div>
+
+              
+                      
+                            <button mat-raised-button type="submit" class="btn btn-success pull-right">Save</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+  </div>
+  </div>
+  
+  
+  
+

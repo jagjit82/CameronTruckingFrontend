@@ -1,0 +1,149 @@
+<div class="main-content">
+        <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header card-header-danger">
+                                <h4 class="card-title">Search Vehicle</h4>
+                                <p class="card-category">Please input search Criteria</p>
+                            </div>
+                            <div class="card-body">
+                                    <div class="row">
+                                            <div class="col-md-6">
+                                              <!-- <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Insurance Expiry Date" type="text" id="insuranceDate" required [(ngModel)]="vehicle.insuranceDate" name="insuranceDate">
+                                              </mat-form-field> -->
+                                              <mat-form-field class="example-full-width">
+                                                <input matInput [matDatepicker] = "picker"  id="insuranceDate"  ng-model-options="{timezone: 'ist'}" placeholder = "Insurance Expiry Date" [(ngModel)]="vehicle.insuranceDate" name="insuranceDate">
+                                                <mat-datepicker-toggle matSuffix [for] = "picker"></mat-datepicker-toggle>
+                                                <mat-datepicker #picker></mat-datepicker>
+                                              </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                                <div class="col-md-6">
+                                                  <mat-form-field class="example-full-width">
+                                                      <input matInput [matDatepicker] = "pickerpermit" id="permitDate" ng-model-options="{timezone: 'ist'}" placeholder = "Permit Validity Date" [(ngModel)]="vehicle.permitDate" name="permitDate">
+                                                      <mat-datepicker-toggle matSuffix [for] = "pickerpermit"></mat-datepicker-toggle>
+                                                      <mat-datepicker #pickerpermit></mat-datepicker>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                  <mat-form-field class="example-full-width">
+                                                    <input matInput [matDatepicker] = "pickerfitness" id="fitnessDate" ng-model-options="{timezone: 'ist'}" placeholder = "Fitness" [(ngModel)]="vehicle.fitnessDate" name="fitnessDate">
+                                                      <mat-datepicker-toggle matSuffix [for] = "pickerfitness"></mat-datepicker-toggle>
+                                                      <mat-datepicker #pickerfitness></mat-datepicker>
+                                                  </mat-form-field>
+                                                </div>
+                                                
+                                            </div>
+
+                                
+                                    <div class="row">
+                                        <div class="col-md-6"> 
+                                          <mat-form-field class="example-full-width">  <mat-label>Vehicle</mat-label>
+                                            <mat-select  name="vehicleDrop" id="vehicleDrop" [(ngModel)]="vehicleDrop" (selectionChange)="onSelectVehicle()">
+                                                <mat-option *ngFor="let vehicle of vehicles | async" [value]="vehicle" >
+                                                    {{ vehicle.vehicleNum }}
+                                               </mat-option> 
+                                               </mat-select></mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                          <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="search text" type="text"  id="misc"  required [(ngModel)]="vehicle.misc" name="misc" >
+                                          </mat-form-field>
+                                        </div>
+                                    </div>
+                                  
+                                    <button mat-raised-button type="button" (click)="search()" class="btn btn-success pull-right">Search</button>
+                                    <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title mt-0">Searched Vehicle </h4>
+                        <p class="card-category"> Filtered Vehicle view details </p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        Vehicle Number
+                                    </th>
+                                    <th>
+                                        Insurance Date
+                                    </th>
+                                    <th>
+                                        Permit Date
+                                    </th>
+                                    <th>
+                                        Fitness
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let vehicle of (vehicleList)">
+                                        <td>{{vehicle.id}}</td>
+                                        <td>{{vehicle.vehicleNum}}</td>
+                                        <td>{{vehicle.insuranceDate | date : "d MMM y"}}</td>
+                                        <td>{{vehicle.permitDate | date : "d MMM y"}}</td>
+                                        <td>{{vehicle.fitnessDate | date : "d MMM y"}}</td>
+                                        <!-- <td><a href="#" [routerLink]="['/editVehicle', vehicle.id]" class="btn-white btn btn-xs">Edit</a> -->
+                                        <!-- <button (click)="deleteVehicle(vehicle.id)">Delete</button></td> -->
+                                        <td class="td-actions text-left">
+                                                <button mat-raised-button type="button" [routerLink]="['/editVehicle', vehicle.id]" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">edit</i>
+                                                </button>
+                                                <button  mat-raised-button  type="button" *ngIf="'ADMIN'==role"  (click)="deleteVehicle(vehicle.id)" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i  class="material-icons">close</i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <nav *ngIf="totalPages>1" aria-label="Page navigation example">
+                                <ul class="pagination pagination-circle pg-blue">
+                                  <li class="page-item"><a class="page-link" (click)="first()" mdbWavesEffect>First</a></li>
+                                  <li class="page-item">
+                                    <a class="page-link" aria-label="Previous" (click)="prev()" mdbWavesEffect>
+                                      <span aria-hidden="true">&laquo;</span>
+                                      <span class="sr-only">Previous</span>
+                                    </a>
+                                  </li>
+                                  <li   *ngFor="let pageNum of  arrayOne(totalPages); let currentElementIndex=index"><a class="page-link active" (click)="getVehicleList(currentElementIndex)" mdbWavesEffect>{{currentElementIndex+1}}</a></li>
+                                  <li class="page-item">
+                                    <a class="page-link" aria-label="Next" (click)="next()" mdbWavesEffect>
+                                      <span aria-hidden="true">&raquo;</span>
+                                      <span class="sr-only">Next</span>
+                                    </a>
+                                  </li>
+                                  <li class="page-item"><a class="page-link" (click)="last()" mdbWavesEffect>Last</a></li>
+                                  <li class="page-item active"><a  class="page-link" mdbWavesEffect>{{pageNum+1}}</a></li>
+                                </ul>
+                              </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+
+
+

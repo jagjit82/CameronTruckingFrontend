@@ -1,0 +1,83 @@
+<div class="main-content">
+  <div class="container-fluid">
+          <div class="col-md-16">
+              <div class="card">
+                  <div class="card-header card-header-success">
+                      <h4 class="card-title">Create Question</h4>
+                  </div>
+                  <div class="card-body">
+                      <form (ngSubmit)="onSubmit()">
+                          <div class="row" *ngIf="question.id!=null">
+                          <div class="col-md-10"> <mat-form-field class="example-full-width">  <mat-label>Test</mat-label>
+                            <mat-select  name="test" id="test"  [(ngModel)]="question.test.id" >
+                                <mat-option *ngFor="let test of tests" [value]="test.id" >
+                                  {{ test.name }}
+                               </mat-option> 
+                               </mat-select>
+                              </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row" *ngIf="question.id==null">
+                        <div class="col-md-10"> <mat-form-field class="example-full-width">  <mat-label>Test</mat-label>
+                          <mat-select  name="test" id="test"  [(ngModel)]="question.test" >
+                              <mat-option *ngFor="let test of tests" [value]="test" >
+                                {{ test.name }}
+                             </mat-option> 
+                             </mat-select>
+                            </mat-form-field>
+                      </div>
+                    </div>
+                      <div class="row">
+                        <div class="col-md-10">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Question"  id="questn" required [(ngModel)]="question.questn" name="questn">
+                            </mat-form-field> </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="OptionA"  id="optionA" required [(ngModel)]="question.optionA" name="optionA">
+                                </mat-form-field> </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="OptionB"  id="optionB" required [(ngModel)]="question.optionB" name="optionB">
+                                    </mat-form-field> </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="OptionC"  id="optionC" required [(ngModel)]="question.optionC" name="optionC">
+                                        </mat-form-field> </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="OptionD"  id="optionD" required [(ngModel)]="question.optionD" name="optionD">
+                                            </mat-form-field> </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-10">  <mat-form-field class="example-full-width"> <mat-label >Correct Answer</mat-label>
+                                              <mat-select  name="correctAnswer" id="correctAnswer" [(ngModel)]="question.correctAnswer">
+                                                  <mat-option *ngFor="let corrctAnswer of corrctAnswers" [value]="corrctAnswer.Name" >
+                                                      {{ corrctAnswer.Code }}
+                                                 </mat-option> </mat-select></mat-form-field>
+                                            </div>
+                                        </div>                   
+                     
+                       
+                        <div class="row">
+                          <button mat-raised-button type="submit"  class="btn btn-success pull-right">Save</button>
+                        </div>
+                      </form>
+                  
+              </div>
+          </div>
+          
+      </div>
+  
+</div>
+</div>
+
+

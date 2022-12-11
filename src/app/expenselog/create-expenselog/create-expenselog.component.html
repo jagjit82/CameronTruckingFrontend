@@ -1,0 +1,92 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header card-header-success">
+                      <h4 class="card-title">Create Expense Log</h4>
+                      <p class="card-category">Please fill in the Expense Logs</p>
+                  </div>
+                  <div class="card-body">
+                      <form (ngSubmit)="onSubmit()">
+                        <div class="row" *ngIf="expenseLog.id==null">
+                              <div class="col-md-6">  <mat-form-field class="example-full-width"> <mat-label >Expense/Income Name</mat-label>
+                                <mat-select  name="expense" id="expense" (selectionChange)="onExpebse(expense.expenseName)" [(ngModel)]="expenseLog.expense" >
+                                    <mat-option *ngFor="let expense of expenses" [value]="expense" >
+                                        {{ expense.expenseName}}
+                                   </mat-option> </mat-select></mat-form-field>
+                              </div>
+                            
+                      </div>
+                      <div class="row" *ngIf="expenseLog.id!=null">
+                        <div class="col-md-6">  <mat-form-field class="example-full-width"> <mat-label >Expense/Income Name</mat-label>
+                          <mat-select  name="expense" id="expense" (selectionChange)="onExpebse(expense.expenseName)" [(ngModel)]="expenseLog.expense.id" >
+                              <mat-option *ngFor="let expense of expenses" [value]="expense.id" >
+                                  {{ expense.expenseName}}
+                             </mat-option> </mat-select></mat-form-field>
+                        </div>
+                      
+                </div>
+                <div class="row">
+                  <div class="col-md-6">  <mat-form-field class="example-full-width"> <mat-label >Account Type</mat-label>
+                    <mat-select  name="accountType" id="accountType" [(ngModel)]="expenseLog.accountType">
+                        <mat-option *ngFor="let accountType of accountTypeLs" [value]="accountType.Name" >
+                            {{ accountType.Code }}
+                       </mat-option> </mat-select></mat-form-field>
+                  </div>
+              </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Expense Amount($) e.g 10.34"  id="expenseAmount" [(ngModel)]="expenseLog.expenseAmount" name="expenseAmount">
+                            </mat-form-field> </div>
+                        </div>
+                      <div class="row">
+                      <div class="col-md-6">
+                          <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Payment Mode"  id="paymentMode" [(ngModel)]="expenseLog.paymentMode" name="paymentMode">
+                          </mat-form-field> </div>
+                      </div>
+                     
+                        
+                      <div class="row">
+                        <div class="col-md-6">
+                          <!-- <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Insurance Expiry Date" type="text" id="insuranceDate" required [(ngModel)]="expenseLog.insuranceDate" name="insuranceDate">
+                          </mat-form-field> -->
+                          <mat-form-field class="example-full-width">
+                            <input matInput [matDatepicker] = "pickerExpenseDate"  id="expenseDate"  ng-model-options="{timezone: ist}" placeholder = "Expense & Income Date" [(ngModel)]="expenseLog.expenseDate" name="expenseDate">
+                            <mat-datepicker-toggle matSuffix [for] = "pickerExpenseDate"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerExpenseDate></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">  <mat-form-field class="example-full-width"> <mat-label >Status</mat-label>
+                          <mat-select  name="status" id="status" [(ngModel)]="expenseLog.status">
+                              <mat-option *ngFor="let status of statusLs" [value]="status.Name" >
+                                  {{ status.Code }}
+                             </mat-option> </mat-select></mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-9">
+                          <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Description"  id="reason" [(ngModel)]="expenseLog.description" name="description">
+                          </mat-form-field> </div>
+                      </div>
+                    
+                          <button mat-raised-button type="submit" class="btn btn-success pull-right">Save</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  
+              </div>
+          </div>
+          
+      </div>
+  </div>
+  
+</div>
+</div>
+
+

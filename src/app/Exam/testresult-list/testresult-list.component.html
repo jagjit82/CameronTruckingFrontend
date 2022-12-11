@@ -1,0 +1,66 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title mt-0"> View Phone Logs </h4>
+                        <p class="card-category"> {{company}}</p>
+                    </div>
+                    <div class="card-body">
+                             
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        Test
+                                    </th>
+                                    <th>
+                                        Student
+                                    </th>
+                                    <th>
+                                        Total Questions
+                                    </th>
+                                    <th>
+                                        Correct
+                                    </th>
+                                    
+                                    <th>
+                                        Action
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let testResultVO of testResultVOLs">
+                                         <td >{{testResultVO.testResultDetail.testResult.test.name}}</td>
+                                         <td >{{testResultVO.testResultDetail.testResult.student.lastName}},{{testResultVO.testResultDetail.testResult.student.firstName}}</td>
+                                         <td >{{testResultVO.testResultDetail.testResult.questionCount}}</td>
+                                         <td >{{testResultVO.correctAnswers}}</td>
+                                         <!-- <td><a href="#" [routerLink]="['/editDiesel', phoneLog.id]" class="btn-white btn btn-xs">Edit</a> -->
+                                        <!-- <button (click)="deleteDiesel(phoneLog.id)">Delete</button></td> -->
+                                        <td class="td-actions text-left">
+                                                <!--<button mat-raised-button type="button" [routerLink]="['/viewDiesel', phoneLog.id]" matTooltip="Diesel Details" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">view_module</i>
+                                                </button>-->
+                                                <button  mat-raised-button  type="button" (click)="deleteTestResult(testResultVO.testResultDetail.testResult.id)" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i  class="material-icons">close</i>
+                                                </button><!--                                                <button  mat-raised-button  type="button" [routerLink]="['/followUps', phoneLog.id]" matTooltip="Follow Up" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i  class="material-icons">subdirectory_arrow_right</i>
+                                                </button>    -->
+                                        
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                            <button mat-raised-button type="submit" (click)="exportDiesel()" class="btn btn-success pull-right">Export</button>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+
+
+

@@ -1,0 +1,63 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title mt-0"> Vehicles Expiring this month</h4>
+                        <p class="card-category">CVIP Date,Insuracne and Plate Number Expiry</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th (click)="sortById()">
+                                        Plate Number
+                                    </th>
+                                    <th (click)="sortByTruckNum()">
+                                        Vehicle Number
+                                    </th>
+                                    <th>
+                                        Plate Number Expiry
+                                    </th>
+                                    <th>
+                                        CVIP Date Expiry
+                                    </th>
+                                    <th>
+                                        Vehicle Insurance Expiry
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let vehicle of vehicles">
+                                        <td>{{vehicle.plateNo}}</td>
+                                        <td >{{vehicle.vehicleNo}}</td>
+                                        <td *ngIf="'true'== highLightPlateNoDate(vehicle.plateNoExp)" class="text-warning">{{vehicle.plateNoExp | date : "MMM d, y"}}</td>
+                                        <td *ngIf="'false'== highLightPlateNoDate(vehicle.plateNoExp)" >{{vehicle.plateNoExp | date : "MMM d, y"}}</td>
+                                        <td *ngIf="'true'== highLightCVIPDate(vehicle.cvipDate)" class="text-warning">{{vehicle.cvipDate | date : "MMM d, y"}}</td>
+                                        <td *ngIf="'false'== highLightCVIPDate(vehicle.cvipDate)">{{vehicle.cvipDate | date : "MMM d, y"}}</td>
+                                        <td *ngIf="'true'== highLightInsuranceDate(vehicle.insuranceDate)" class="text-warning">{{vehicle.insuranceDate | date : "MMM d, y"}}</td>
+                                        <td *ngIf="'false'== highLightInsuranceDate(vehicle.insuranceDate)">{{vehicle.insuranceDate | date : "MMM d, y"}}</td>
+                                        <!-- <td><a href="#" [routerLink]="['/editTruck', vehicle.id]" class="btn-white btn btn-xs">Edit</a> -->
+                                        <!-- <button (click)="deleteTruck(vehicle.id)">Delete</button></td> -->
+                                        <td class="td-actions text-left">
+                                        <button mat-raised-button type="button" [routerLink]="['/viewVehicle', vehicle.id]" matTooltip="Vehicle Details" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">view_module</i>
+                                        </button>
+                                        </td>
+                                          </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+
+
+

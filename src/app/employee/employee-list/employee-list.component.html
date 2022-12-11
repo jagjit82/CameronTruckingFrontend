@@ -1,0 +1,58 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title mt-0">Employee List</h4>
+                        <p class="card-category"> View Employees details</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <button mat-raised-button type="button" [routerLink]="['/addEmployee']" class="btn btn-danger pull-left">Add Employee</button>
+                  
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>Name</th>
+                                    <th>UserName</th>
+                                    <th>Date of Joining</th>
+                                    <th>Immigration Status</th>
+                                    <th>Email</th>
+                                    <th>Actions</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let employee of employees | async">
+                                         <td>{{employee.lastName}},{{employee.firstName}}</td>
+                                        <td>{{employee.userName}}</td>
+                                        <td>{{employee.dateOfJoining| date : "d MMM y"}}</td>
+                                        <td>{{employee.immigrationStatus}}</td>
+                                        <td>{{employee.email}}</td>
+                                        <!-- <td><a href="#" [routerLink]="['/editTruck', truck.id]" class="btn-white btn btn-xs">Edit</a> -->
+                                        <!-- <button (click)="deleteTruck(truck.id)">Delete</button></td> -->
+                                         <button mat-raised-button type="button" [routerLink]="['/editEmployee', employee.id]" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">edit</i>
+                                                </button>
+                                                <button mat-raised-button type="button" [routerLink]="['/viewEmployee', employee.id]"  matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">view_module</i>
+                                                </button>
+                                                <button mat-raised-button type="button"  (click)="deleteEmployee(employee.id)" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">close</i>
+                                                </button>
+                                                <button mat-raised-button type="button" *ngIf="employee.status=='ACTIVE'"  (click)="DeactivateEmployee(employee.id)" matTooltip="Deactivate Employee" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">stop</i>
+                                                </button>
+                                                <button mat-raised-button type="button" *ngIf="employee.status=='INACTIVE'" (click)="ActivateEmployee(employee.id)" matTooltip="Activate" [matTooltipPosition]="'above'" class="btn btn-success btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">play_arrow</i>
+                                                </button>
+                                         </tr>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
